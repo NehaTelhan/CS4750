@@ -6,18 +6,24 @@ import csv
 import numpy as np
 import re
 
-f = codecs.open('/Users/sadiyahfaruk/schoolstuff/database/dbproj/alabama.txt', 'r', encoding='utf-8')
+# change before harvesting
+f = codecs.open('/Users/sadiyahfaruk/schoolstuff/database/dbproj/colorado.txt', 'r', encoding='utf-8')
+state = "Colorado"
+state_acronym = "CO"
+
+
+# don't need to change
 state_arr = []
 node = []
-state = "Alabama"
-state_acronym = "AL"
-key_num = 1
+key_num = 0
 filename = state + ".csv"
 b = open(filename, 'w')
 a = csv.writer(b)
+node1 = ["Plant ID", "Symbol", "Synonym Symbol", "Genus", "Species", "Author", "Common Name", "Family Name", "State"]
+state_arr.append(node1)
 
 for line in f.readlines():
-    if key_num == 1:
+    if key_num == 0:
         key_num += 1
         continue
     unicodedata.normalize('NFKD', line).encode('ascii', 'ignore')
@@ -49,7 +55,7 @@ for line in f.readlines():
         family = "None"
     p_key = str(key_num)+state_acronym
     regex = re.compile("[^a-zA-Z]")
-    if 'ssp.' in author or 'var.' in author:
+    if 'ssp.' in author or 'var.' in author or 'or' in author:
         continue
     if len(author) == 1:
         author[0] = regex.sub('', author[0])
@@ -65,13 +71,49 @@ for line in f.readlines():
     # print("Genus", genus, " Species", species, " Author", author)
     # print("National Common Name", common_name)
     # print("Family", family)
-
-    node = [p_key, symbol, syn_symbol, genus, species, author, common_name, family, state]
+    author_str = ""
+    col1 = [p_key]
+    if len(col1) > 1:
+        for i in range(0, len(col1)):
+            p_key = p_key + " " + col1[i]
+    col2 = [symbol]
+    if len(col2) > 1:
+        for i in range(0, len(col2)):
+            symbol = symbol + " " + col2[i]
+    col3 = [syn_symbol]
+    if len(col3) > 1:
+        for i in range(0, len(col3)):
+            syn_symbol = syn_symbol + " " + col3[i]
+    col4 = [genus]
+    if len(col4) > 1:
+        for i in range(0, len(col4)):
+            genus = genus + " " + col4[i]
+    col5 = [species]
+    if len(col5) > 1:
+        for i in range(0, len(col5)):
+            species = species + " " + col5[i]
+    col6 = author
+    if len(author) > 1:
+        for i in range(0, len(author)):
+            author_str += " " + author[i]
+    col7 = [common_name]
+    if len(col7) > 1:
+        for i in range(0, len(col7)):
+            common_name = common_name + " " + col7[i]
+    col8 = [family]
+    if len(col8) > 1:
+        for i in range(0, len(col8)):
+            family = family + " " + col8[i]
+    col9 = [state]
+    if len(col9) > 1:
+        for i in range(0, len(col9)):
+            state = state + " " + col9[i]
+    node = [p_key, symbol, syn_symbol, genus, species, author_str, common_name, family, state]
     # n = np.array(node)
     # a.writerows(n)
     key_num += 1
     state_arr.append(node)
-    print(p_key)
+    print(node)
     # a.writerows(node)
     # print(node)
     # print(p_key)
@@ -81,6 +123,7 @@ for line in f.readlines():
 # print(state_arr)
 # data = np.array(state_arr)
 a.writerows(state_arr)
+# f.write(state_arr)
 b.close()
 
 
