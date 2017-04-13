@@ -7,9 +7,9 @@ import numpy as np
 import re
 
 # change before harvesting
-f = codecs.open('/Users/sadiyahfaruk/schoolstuff/database/dbproj/colorado.txt', 'r', encoding='utf-8')
-state = "Colorado"
-state_acronym = "CO"
+f = codecs.open('/Users/sadiyahfaruk/schoolstuff/database/dbproj/wyoming.txt', 'r', encoding='utf-8')
+state = "Wyoming"
+state_acronym = "WY"
 
 
 # don't need to change
@@ -19,7 +19,7 @@ key_num = 0
 filename = state + ".csv"
 b = open(filename, 'w')
 a = csv.writer(b)
-node1 = ["Plant ID", "Symbol", "Synonym Symbol", "Genus", "Species", "Author", "Common Name", "Family Name", "State"]
+node1 = ["Plant_ID", "Symbol", "Synonym_Symbol", "Genus", "Species", "Author", "Common_Name", "Familys", "State"]
 state_arr.append(node1)
 
 for line in f.readlines():
@@ -92,6 +92,7 @@ for line in f.readlines():
     if len(col5) > 1:
         for i in range(0, len(col5)):
             species = species + " " + col5[i]
+    species = species.replace('"', '')
     col6 = author
     if len(author) > 1:
         for i in range(0, len(author)):
