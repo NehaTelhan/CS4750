@@ -58,7 +58,7 @@
                         <a href="#about">Arboretums Search</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#contact">About Us</a>
+                        <a href="#contact">Join Community</a>
                     </li>
                 </ul>
             </div>
@@ -157,7 +157,13 @@
         </div>
     </section>
 
-    <!-- About Section -->
+
+
+
+    <!-- ARBORTEUM SECTION!!!!!!!!!!!!!!!! -->
+
+
+
     <section class="success" id="about">
         <div class="container">
             <div class="row">
@@ -187,7 +193,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2>Contact Me</h2>
+                    <h2>Join the Botanist Community</h2>
                     <hr class="star-primary">
                 </div>
             </div>
@@ -195,7 +201,55 @@
                 <div class="col-lg-8 col-lg-offset-2">
                     <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
                     <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
-                    <form name="sentMessage" id="contactForm" novalidate>
+
+
+		    <form action="UserInsert.php" method="post">
+		      <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+			     <!-- First Name: <input type="text" name="firstname">-->
+			      <input type="text" class="form-control" placeholder="First Name" id="firstname" required data-validation-required-message="Please enter your First Name.">
+			       <p class="help-block text-danger"></p>
+                            </div>
+                       </div>
+
+		       <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                              <!--Last Name: <input type="text" name="lastname">-->
+                              <input type="text" class="form-control" placeholder="Last Name" id="lastname" required data-validation-required-message="Please enter your Last Name.">
+                               <p class="help-block text-danger"></p>
+                            </div>
+                       </div>
+
+		       <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                              <!--State: <input type="text" name="state">-->
+                              <input type="text" class="form-control" placeholder="State" id="state" required data-validation-required-message="Please enter your State of residence.">
+                               <p class="help-block text-danger"></p>
+                            </div>
+                       </div>
+
+
+		       <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                              <!--Region: <input type="text" name="region">-->
+                              <input type="text" class="form-control" placeholder="Region" id="region" required data-validation-required-message="Please enter your Region of residence.">
+                               <p class="help-block text-danger"></p>
+                            </div>
+                       </div>
+
+		       <br>
+                        <div id="success"></div>
+                        <div class="row">
+                            <div class="form-group col-xs-12">
+                                <button type="submit" class="btn btn-success btn-lg">Send</button>
+                            </div>
+                        </div>
+                    </form>
+
+
+
+
+<!---                    <form name="sentMessage" id="contactForm" novalidate>
                         <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
                                 <label for="name">Name</label>
@@ -232,6 +286,8 @@
                             </div>
                         </div>
                     </form>
+
+-->
                 </div>
             </div>
         </div>
