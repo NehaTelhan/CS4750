@@ -1,4 +1,4 @@
-Plant ID,Symbol,Synonym Symbol,Genus,Species,Author,Common Name,Family Name,State
+Plant_ID,Symbol,Synonym_Symbol,Genus,Species,Author,Common_Name,Family,State
 1AL,DIBR2,None,Dicliptera,brachiata, Pursh Spreng,branched foldwing,Acanthaceae,Alabama
 2AL,DIBR2,DIBR6,Diapedium,brachiatum, Pursh Kuntze,None,Acanthaceae,Alabama
 3AL,DIBR2,DIGL4,Dicliptera,glandulosa,,None,Acanthaceae,Alabama
