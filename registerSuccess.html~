@@ -51,14 +51,17 @@
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
-              <!--  <li class="page-scroll">
+                    <li class="page-scroll">
                         <a href="#portfolio">Explore!</a>
                     </li>
                     <li class="page-scroll">
                         <a href="#about">Arboretums Search</a>
-                    </li> -->
+                    </li>
                     <li class="page-scroll">
                         <a href="#contact">Join Community</a>
+                    </li>
+                    <li class="page-scroll">
+                        <p>Welcome, INSERT_USER. You are logged in as EMAIL</p>
                     </li>
                 </ul>
             </div>
@@ -72,9 +75,9 @@
         <div class="container" id="maincontent" tabindex="-1">
             <div class="row">
                 <div class="col-lg-12">
-                    <img class="img-responsive" src="img/baby_groot.jpg" alt="">
+                    <!--img class="img-responsive" src="img/baby_groot.jpg" alt=""!-->
                     <div class="intro-text">
-                        <h1 class="name">Welcome to the world of plants</h1>
+                        <h1 class="name">Registration Success!</h1>
                         <hr class="star-light">
                         <span class="skills">Explore - Search - Research - Discover</span>
                     </div>
@@ -85,12 +88,12 @@
 
 
 
-    <!-- User Registration -->
+    <!-- User Registration Section -->
     <section id="contact">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2>Register and join the botanist community</h2>
+                    <h2>Please enter more information:</h2>
                     <hr class="star-primary">
                 </div>
             </div>
@@ -99,47 +102,40 @@
                     <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
                     <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
 
-		    <form action="registerSuccess" method="post">
-                      <div class="row control-group">
-                            <div class="form-group col-xs-12 floating-label-form-group controls">
-                             <!-- First Name: <input type="text" name="firstname">-->
-			      <input type="text" class="form-control" placeholder="First Name" id="firstname" name="firstname" required data-validation-required-message="Please ent                                er your First Name.">
-                               <p class="help-block text-danger"></p>
-                            </div>
-                       </div>
+		        <form action="UserInsert.php" method="post">
+          <!--Enter State info !-->
+              <div class="row control-group">
+              <div class="form-group col-xs-12 floating-label-form-group controls">
+                      <State: <input type="text" name="state">
+                      <input type="text" class="form-control" placeholder="State" id="state" required data-validation-required-message="Please enter your State of residence.">
+                          <p class="help-block text-danger"></p>
+                        </div>
+              </div>
 
+            <!--Enter Region info !-->
                        <div class="row control-group">
                             <div class="form-group col-xs-12 floating-label-form-group controls">
-                              <!--Last Name: <input type="text" name="lastname">-->
-                              <input type="text" class="form-control" placeholder="Last Name" id="lastname" name="lastname" required data-validation-required-message="Please enter                                 your Last Name.">
+                              <Region: <input type="text" name="region">
+                              <input type="text" class="form-control" placeholder="Region" id="region" required data-validation-required-message="Please enter your Region of residence.">
                                <p class="help-block text-danger"></p>
                             </div>
-                       </div>
+                       </div>>
 
-                      <div class="row control-group">
-                            <div class="form-group col-xs-12 floating-label-form-group controls">
-                              <!--Email: <input type="text" name="email">-->
-                              <input type="text" class="form-control" placeholder="Email" id="email" name="email" required data-validation-required-message="Please enter your E-mail you will use to login.">
-                               <p class="help-block text-danger"></p>
+            <!-- Submit button !-->
+                       <br>
+                        <div id="success"></div>
+                        <div class="row">
+                            <div class="form-group col-xs-12">
+                                <button type="submit" class="btn btn-success btn-lg">Submit</button>
                             </div>
-                       </div>
-
-                       <div class="row control-group">
-                            <div class="form-group col-xs-12 floating-label-form-group controls">
-                              <!--Password: <input type="text" name="password">-->
-                              <input type="text" class="form-control" placeholder="Password" id="password" name="password" required data-validation-required-message="Please enter a password.">
-                               <p class="help-block text-danger"></p>
-                            </div>
-                       </div>
-		      
-
-
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Portfolio Grid Section 
+    <!-- Portfolio Grid Section -->
     <section id="portfolio">
         <div class="container">
             <div class="row">
@@ -213,13 +209,7 @@
         </div>
     </section>
 
-
-
-
-    <!-- ARBORTEUM SECTION!!!!!!!!!!!!!!!!
-
-
-
+    <!-- ARBORTEUM SECTION!!!!!!!!!!!!!!!! -->
     <section class="success" id="about">
         <div class="container">
             <div class="row">
@@ -427,7 +417,7 @@
                             <hr class="star-primary">
                             <img src="img/portfolio/game.png" class="img-responsive img-centered" alt="">
                             <p> Interested in learning more about exotic plants and how to obtain them. Read more</p>
-			    <p>Exotic plants, or <strong>introduced plants</strong> are plant species that are introduced to a region in which they are not native. Many cultivate plants are used as ornamentals and are often considered <a href="http://horticultureandsoilscience.wikia.com/wiki/Invasive_Plants">invasive species</p>
+			        <p>Exotic plants, or <strong>introduced plants</strong> are plant species that are introduced to a region in which they are not native. Many cultivate plants are used as ornamentals and are often considered <a href="http://horticultureandsoilscience.wikia.com/wiki/Invasive_Plants">invasive species</p>
                             <ul class="list-inline item-details">
                                 <li>Wikia:
                                     <strong><a href="http://horticultureandsoilscience.wikia.come/wiki/Invasive_Plants">Invasive Plants</a>
