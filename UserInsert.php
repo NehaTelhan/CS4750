@@ -1,4 +1,3 @@
-
 <?php
 include_once("./library.php"); // To connect to the database
 $con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
@@ -10,12 +9,14 @@ if (mysqli_connect_errno())
 // Form the SQL query (an INSERT query)
 $first_name = $_POST['firstname'];
 $last_name = $_POST['lastname'];
+$email = $_POST['email'];
+$password = $_POST['password'];
 
-echo "$first_name";
-echo "$last_name";
+$hashed_password = password_hash('$password', PASSWORD_DEFAULT).
+echo $hashed_password
 
-//$sql="INSERT INTO User (First_Name, Last_Name) VALUES ('$first_name', '$last_name')";
-$sql="INSERT INTO User VALUES (50, 'Jack', 'Dawson')";
+$sql="INSERT INTO User (First_Name, Last_Name, Email, Password) VALUES ('$first_name', '$last_name', email, password)";
+//$sql="INSERT INTO User VALUES (50, 'Jack', 'Dawson')";
 
 
 if (!mysqli_query($con,$sql))
