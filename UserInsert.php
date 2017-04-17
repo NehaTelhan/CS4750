@@ -13,9 +13,8 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 
 $hashed_password = password_hash('$password', PASSWORD_DEFAULT).
-echo $hashed_password
 
-$sql="INSERT INTO User (First_Name, Last_Name, Email, Password) VALUES ('$first_name', '$last_name', email, password)";
+$sql="INSERT INTO User (First_Name, Last_Name, Email, Password) VALUES ('$first_name', '$last_name', '$email', '$hashed_password')";
 //$sql="INSERT INTO User VALUES (50, 'Jack', 'Dawson')";
 
 
@@ -26,6 +25,7 @@ if (!mysqli_query($con,$sql))
 else
   {
   echo "1 record added"; // Output to user
+  echo "'$hashed_password'";
   }
 mysqli_close($con);
 ?>
