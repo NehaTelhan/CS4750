@@ -60,9 +60,39 @@
                     <li class="page-scroll">
                         <a href="#contact">User Profile</a>
                     </li>
-		    <br>
+		        <br>
                     <li class="page-scroll">
-                        <a>Welcome, INSERT_USER. You are logged in as EMAIL</a>
+                        <a>
+                       
+			Welcome  <?php
+                        include_once("./library.php"); // To connect to the database
+                        $con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
+                        // Check connection
+                        if (mysqli_connect_errno())
+                          {
+                            echo "Failed to connect to MySQL: " . mysqli_connect_error();
+                          }
+                        // Form the SQL query (an INSERT query)
+                        $first_name = $_POST['firstname'];
+                        $last_name = $_POST['lastname'];
+                        $email = $_POST['email'];
+                        $password = $_POST['password'];
+                        $hashed_password = password_hash('$password', PASSWORD_DEFAULT).
+
+                        $sql="INSERT INTO User (First_Name, Last_Name, Email, Password) VALUES ('$first_name', '$last_name', '$email', '$hashed\
+_password')";
+
+                        if (!mysqli_query($con,$sql))
+                          {
+                            die('Error: ' . mysqli_error($con));
+                          }
+                        else
+                          {
+                            echo "Welcome $first_name. You are logged in as $email.";
+                          }
+                        mysqli_close($con);
+                        ?>. You are logged in as <?=$email?>. 
+                      </a>
                     </li> </br>
                 </ul>
             </div>
@@ -103,7 +133,7 @@
                     <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
                     <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently. -->
 
-		        <form action="UserInsert.php" method="post">
+		    <form action="viewProfile.php" method="post">
           <!--Enter State info !-->
               <div class="row control-group">
               <div class="form-group col-xs-12 floating-label-form-group controls">
@@ -418,7 +448,7 @@
                             <hr class="star-primary">
                             <img src="img/portfolio/game.png" class="img-responsive img-centered" alt="">
                             <p> Interested in learning more about exotic plants and how to obtain them. Read more</p>
-			        <p>Exotic plants, or <strong>introduced plants</strong> are plant species that are introduced to a region in which they are not native. Many cultivate plants are used as ornamentals and are often considered <a href="http://horticultureandsoilscience.wikia.com/wiki/Invasive_Plants">invasive species</p>
+			            <p>Exotic plants, or <strong>introduced plants</strong> are plant species that are introduced to a region in which they are not native. Many cultivate plants are used as ornamentals and are often considered <a href="http://horticultureandsoilscience.wikia.com/wiki/Invasive_Plants">invasive species</p>
                             <ul class="list-inline item-details">
                                 <li>Wikia:
                                     <strong><a href="http://horticultureandsoilscience.wikia.come/wiki/Invasive_Plants">Invasive Plants</a>
