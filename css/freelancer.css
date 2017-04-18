@@ -184,6 +184,12 @@ section.success {
   background: #18BC9C;
   color: white;
 }
+
+section.contact2 {
+  background: white;
+  color: #18BC9C;
+}
+
 @media (max-width: 767px) {
   section {
     padding: 75px 0;
