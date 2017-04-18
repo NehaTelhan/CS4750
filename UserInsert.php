@@ -78,7 +78,7 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 $hashed_password = password_hash('$password', PASSWORD_DEFAULT).
 
-  $sql="INSERT INTO User (First_Name, Last_Name, Email, Password) VALUES ('$first_name', '$last_name', '$email', '$hashed_password')";
+  $sql="INSERT INTO User (First_Name, Last_Name, Email, Password) VALUES ('$first_name', '$last_name', '$email', '$password')";
 
 if (!mysqli_query($con,$sql))
   {
