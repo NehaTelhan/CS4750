@@ -70,9 +70,7 @@
 
 
 
-
-
-
+   <!--THIS IS ASSOCIATED WITH CHECKING LOG IN CREDENTIALS TO TAKE USER TO NEXT PAGE -->
                         <?php
 include_once("./library.php"); // To connect to the database
 
@@ -92,18 +90,18 @@ $hashed_password = password_hash('$password', PASSWORD_DEFAULT).
 //REMEMBER, the HASHED PASSWORD is stored in the database
 
   // What I want to do is get the UID associated with this e-mail address and check to see the hashed password we have saved matches the password
-$query1 = mysql_query("SELECT email FROM User WHERE email='$email'");
-$query2 = mysql_query("SELECT password FROM User WHERE password='$password'");
-
+$query1 = mysql_query("SELECT Email FROM User WHERE Email='$email'");
+$query2 = mysql_query("SELECT Password FROM User WHERE Password='$password'");
 
 if ($email == $query1 && $password == $query2) {
   $_SESSION["logged_in"] = true;
   $_SESSION["email"] = $email;
-  echo "consider yourself logged in!";
 }
 else {
-  echo "The username or password are incorrect.";
+
     }
+
+
 /*
 if (password_verify($password, $query2) && $email == $query1){
   echo "Consider yourself Logged in!";
@@ -111,19 +109,29 @@ if (password_verify($password, $query2) && $email == $query1){
 else {
   echo "Invalid Credentials";
 }
-*/
+
 
 if (!mysqli_query($con,$sql))
   {
-    die('Error: ' . mysqli_error($con));
+    die('Error: FROM HERE ' . mysqli_error($con));
   }
 else
   {
-  echo "1 record added"; // Output to user
+    //Actually want to load them to the signed in page....TODO
   echo "'$hashed_password'";
   }
 mysqli_close($con);
-                        ?>
+*/                        ?>
+
+
+
+
+
+
+
+
+
+
                       </a>
                     </li> </br>
                 </ul>

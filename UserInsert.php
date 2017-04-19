@@ -63,6 +63,23 @@
        <br>
                     <li class="page-scroll">
                         <a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   <!--THIS IS ASSOCIATED WITH iNSERTING USER INFORMATION INTO THE DATABASE-->
+
                         <?php
    include_once("./library.php"); // To connect to the database
 $con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
@@ -76,9 +93,10 @@ $first_name = $_POST['firstname'];
 $last_name = $_POST['lastname'];
 $email = $_POST['email'];
 $password = $_POST['password'];
+
 $hashed_password = password_hash('$password', PASSWORD_DEFAULT).
 
-  $sql="INSERT INTO User (First_Name, Last_Name, Email, Password) VALUES ('$first_name', '$last_name', '$email', '$password')";
+  $sql="INSERT INTO User (First_Name, Last_Name, Email, Password) VALUES ('$first_name', '$last_name', '$email', '$hashed_password')";
 
 if (!mysqli_query($con,$sql))
   {
@@ -86,10 +104,18 @@ if (!mysqli_query($con,$sql))
   }
 else
   {
-    echo "Welcome $first_name. You are logged in as $email.";
+    echo "Welcome $first_name!";
   }
 mysqli_close($con);
                         ?>
+
+
+
+
+
+
+
+
                       </a>
                     </li> </br>
                 </ul>
