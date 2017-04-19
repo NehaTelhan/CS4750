@@ -10,10 +10,11 @@ if (mysqli_connect_errno())
     echo "Failed to connect to MySQL: " . mysqli_connect_error();
   }
 // Form the SQL query (an INSERT query)
+
 $state = $_POST['state'];
 $region = $_POST['region'];
-
 $sql="INSERT INTO Lives (State, Region) VALUES ('$state', '$region')";
+
 
 if (!mysqli_query($con,$sql))
   {
@@ -22,6 +23,7 @@ if (!mysqli_query($con,$sql))
 else
   {
     echo "Residential Information Added!";
+    echo "You live in the state $state and the region $region";
   }
 mysqli_close($con);
 ?>
