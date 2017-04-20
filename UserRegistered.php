@@ -23,11 +23,7 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-<<<<<<< HEAD
    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-=======
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
->>>>>>> 3a1f0b19603bb2d5e7a828a42fe5822cce561812
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -49,11 +45,7 @@
                 <a class="navbar-brand" href="#page-top">A Plant Enthusiast's Haven</a>
             </div>
 
-<<<<<<< HEAD
    <!-- Collect the nav links, forms, and other content for toggling -->
-=======
-            <!-- Collect the nav links, forms, and other content for toggling -->
->>>>>>> 3a1f0b19603bb2d5e7a828a42fe5822cce561812
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="hidden">
@@ -68,24 +60,16 @@
                     <li class="page-scroll">
                         <a href="#contact">User Profile</a>
                     </li>
-<<<<<<< HEAD
        <li class="page-scroll">
-                        <a href="LogOut.php">Log Out</a>
+                        <a href="Logout.php">Log Out</a>
                     </li>
            <br>
-=======
-		    <li class="page-scroll">
-                        <a href="LogOut.php">Log Out</a>
-                    </li>
-		        <br>
->>>>>>> 3a1f0b19603bb2d5e7a828a42fe5822cce561812
                     <li class="page-scroll">
                         <a>
 
 
 
                           <!--User Insert!-->
-<<<<<<< HEAD
    <?php
    include_once("./library.php"); // To connect to the database
 $con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
@@ -101,7 +85,7 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 $hashed_password = password_hash('$password', PASSWORD_DEFAULT).
 
-session_start();
+  session_start();
 $sql="INSERT INTO User (First_Name, Last_Name, Email, Password) VALUES ('$first_name', '$last_name', '$email', '$hashed_password')";
 $_SESSION['email'] = $email;
 
@@ -114,36 +98,6 @@ else
     echo "Welcome $first_name. You are logged in as $email.";
   }
 mysqli_close($con);
-=======
-			<?php
-                        include_once("./library.php"); // To connect to the database
-                        $con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
-                        // Check connection
-                        if (mysqli_connect_errno())
-                          {
-                            echo "Failed to connect to MySQL: " . mysqli_connect_error();
-                          }
-                        // Form the SQL query (an INSERT query)
-                        $first_name = $_POST['firstname'];
-                        $last_name = $_POST['lastname'];
-                        $email = $_POST['email'];
-                        $password = $_POST['password'];
-                        $hashed_password = password_hash('$password', PASSWORD_DEFAULT).
-
-                        session_start();
-                        $sql="INSERT INTO User (First_Name, Last_Name, Email, Password) VALUES ('$first_name', '$last_name', '$email', '$hashed_password')";
-                        $_SESSION['email'] = $email;
-
-                        if (!mysqli_query($con,$sql))
-                          {
-                            die('Error: ' . mysqli_error($con));
-                          }
-                        else
-                          {
-                            echo "Welcome $first_name. You are logged in as $email.";
-                          }
-                        mysqli_close($con);
->>>>>>> 3a1f0b19603bb2d5e7a828a42fe5822cce561812
                         ?>
 
                       </a>
@@ -184,7 +138,6 @@ mysqli_close($con);
         </div>
         <div class="row">
           <div class="col-lg-8 col-lg-offset-2">
-<<<<<<< HEAD
   <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
   <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently-->
 
@@ -195,33 +148,14 @@ mysqli_close($con);
     <input type="text" class="form-control" placeholder="State" id="state" name="state" required data-validation-required-message="Please enter your State of residence.">
     <p class="help-block text-danger"></p>
   </div>
-=======
-            <!-- To configure the contact form email address, go to mail/contact_me.php and update the email address in the PHP file on line 19. -->
-            <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently-->
-
-	    <form action="UserLives.php" method="post">
-              <!--Enter State info !-->
-              <div class="row control-group">
-		<div class="form-group col-xs-12 floating-label-form-group controls">
-		  <input type="text" class="form-control" placeholder="State" id="state" name="state" required data-validation-required-message="Please enter your State of residence.">
-		  <p class="help-block text-danger"></p>
-		</div>
->>>>>>> 3a1f0b19603bb2d5e7a828a42fe5822cce561812
               </div>
 
               <!--Enter Region info !-->
               <div class="row control-group">
-<<<<<<< HEAD
   <div class="form-group col-xs-12 floating-label-form-group controls">
                   <input type="text" class="form-control" placeholder="Region" id="region" name="region" required data-validation-required-message="Please enter your Region of residence.">
                   <p class="help-block text-danger"></p>
   </div>
-=======
-		<div class="form-group col-xs-12 floating-label-form-group controls">
-                  <input type="text" class="form-control" placeholder="Region" id="region" name="region" required data-validation-required-message="Please enter your Region of residence.">
-                  <p class="help-block text-danger"></p>
-		</div>
->>>>>>> 3a1f0b19603bb2d5e7a828a42fe5822cce561812
               </div>
 
             <!-- Submit button !-->
@@ -345,17 +279,10 @@ mysqli_close($con);
                     <div class="footer-col col-md-4">
                         <h3>Location</h3>
                         <p>Rice Hall, Engineer's Way
-<<<<<<< HEAD
   <br>Charlottesville, VA 22003</p>
                     </div>
                     <div class="footer-col col-md-4">
   <h3>Connect with Us Elsewhere (Don't)</h3>
-=======
-                            <br>Charlottesville, VA 22003</p>
-                    </div>
-                    <div class="footer-col col-md-4">
-                        <h3>Connect with Us Elsewhere (Don't)</h3>
->>>>>>> 3a1f0b19603bb2d5e7a828a42fe5822cce561812
                         <ul class="list-inline">
                             <li>
                                 <a href="#" class="btn-social btn-outline"><span class="sr-only">Facebook</span><i class="fa fa-fw fa-facebook"></i></a>
@@ -385,22 +312,14 @@ mysqli_close($con);
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-<<<<<<< HEAD
 				 Copyright &copy; Your Website 2016
-=======
-                        Copyright &copy; Your Website 2016
->>>>>>> 3a1f0b19603bb2d5e7a828a42fe5822cce561812
                     </div>
                 </div>
             </div>
         </div>
     </footer>
 
-<<<<<<< HEAD
 				 <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
-=======
-    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
->>>>>>> 3a1f0b19603bb2d5e7a828a42fe5822cce561812
     <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
         <a class="btn btn-primary" href="#page-top">
             <i class="fa fa-chevron-up"></i>
@@ -423,7 +342,6 @@ mysqli_close($con);
                             <h2>Succulents</h2>
                             <hr class="star-primary">
                             <img src="img/portfolio/cabin.png" class="img-responsive img-centered" alt="">
-<<<<<<< HEAD
 				 <p>Succulent comes from the Latin word <i>"Sucus"</i>, which means juice or sap. Succulents are sometimes referred to as 'Water Storage Plants' as they have some parts that are more normally thickened and fleshy, usually to retain water in arid climates or soil conditions Many plant families have multiple succulents found within them (over 25 plant families). In some families, such as Aizoaceae, Cactaceae, and Crassulaceae, most species are succulents. </p>
                             <ul class="list-inline item-details">
 				 <li>Wikipedia:
@@ -435,19 +353,6 @@ mysqli_close($con);
                                     </strong>
                                 </li>
 				 <li>Facts about Succulents:
-=======
-                            <p>Succulent comes from the Latin word <i>"Sucus"</i>, which means juice or sap. Succulents are sometimes referred to as 'Water Storage Plants' as they have some parts that are more normally thickened and fleshy, usually to retain water in arid climates or soil conditions Many plant families have multiple succulents found within them (over 25 plant families). In some families, such as Aizoaceae, Cactaceae, and Crassulaceae, most species are succulents. </p>
-                            <ul class="list-inline item-details">
-                                <li>Wikipedia:
-                                    <strong><a href="https://en.wikipedia.org/wiki/Succulent_plant">Succulent Plant</a>
-                                    </strong>
-                                </li>
-                                <li>Date:
-                                    <strong><a href="http://startbootstrap.com">April 2014</a>
-                                    </strong>
-                                </li>
-                                <li>Facts about Succulents:
->>>>>>> 3a1f0b19603bb2d5e7a828a42fe5822cce561812
                                     <strong><a href="http://www.housebeautiful.com/lifestyle/gardening/g3441/interesting-facts-about-succulents/">Learn More</a>
                                     </strong>
                                 </li>
@@ -474,7 +379,6 @@ mysqli_close($con);
                             <h2>Aquatic Plants</h2>
                             <hr class="star-primary">
                             <img src="img/portfolio/cake.png" class="img-responsive img-centered" alt="">
-<<<<<<< HEAD
 				 <p> Aquatic plants are plants that have adapted to living in aquqatic environments (saltwater or freshwater). They are also refered to as <i>hydrophytes</i> or <i>macrophytes</i>. One of the largest aquatic plants in the world is the <a href="https://en.wikipedia.org/wiki/Victoria_amazonica">Amazon Water Lily</a>, one of the smallest is the minute <a href="https://en.wikipedia.org/wiki/Duckweed">duckweed</a>. </p>
                             <ul class="list-inline item-details">
 				 <li>Wikipedia:
@@ -486,19 +390,6 @@ mysqli_close($con);
                                     </strong>
                                 </li>
 				 <li>Common Waterplants:
-=======
-                            <p> Aquatic plants are plants that have adapted to living in aquqatic environments (saltwater or freshwater). They are also refered to as <i>hydrophytes</i> or <i>macrophytes</i>. One of the largest aquatic plants in the world is the <a href="https://en.wikipedia.org/wiki/Victoria_amazonica">Amazon Water Lily</a>, one of the smallest is the minute <a href="https://en.wikipedia.org/wiki/Duckweed">duckweed</a>. </p>
-                            <ul class="list-inline item-details">
-                                <li>Wikipedia:
-                                    <strong><a href="https://en.wikipedia.org/wiki/Aquatic_plant"> Aquatic Plants</a>
-                                    </strong>
-                                </li>
-                                <li>Date:
-                                    <strong><a href="http://startbootstrap.com">April 2014</a>
-                                    </strong>
-                                </li>
-                                <li>Common Waterplants:
->>>>>>> 3a1f0b19603bb2d5e7a828a42fe5822cce561812
                                     <strong><a href="http://www.bhg.com/gardening/plant-dictionary/water/">Descriptions and Info</a>
                                     </strong>
                                 </li>
@@ -525,7 +416,6 @@ mysqli_close($con);
                             <h2>Arboretums</h2>
                             <hr class="star-primary">
                             <img src="img/portfolio/circus.png" class="img-responsive img-centered" alt="">
-<<<<<<< HEAD
 				 <p>The United States as numerous botanical gardens devoted to treeds, weeds, flowers and all plants alike. They are places where many varieties of trees are grown for research, educational and ornamental purposes; where trees and shrubs are cultivated for exhibition.</p>
                             <ul class="list-inline item-details">
 				 <li>National Arboretum:
@@ -537,19 +427,6 @@ mysqli_close($con);
                                     </strong>
                                 </li>
 				 <li>Calendar & Events:
-=======
-                            <p>The United States as numerous botanical gardens devoted to treeds, weeds, flowers and all plants alike. They are places where many varieties of trees are grown for research, educational and ornamental purposes; where trees and shrubs are cultivated for exhibition.</p>
-                            <ul class="list-inline item-details">
-                                <li>National Arboretum:
-                                    <strong><a href="http://www.usna.usda.gov/">Explore</a>
-                                    </strong>
-                                </li>
-                                <li>Date:
-                                    <strong><a href="http://startbootstrap.com">April 2014</a>
-                                    </strong>
-                                </li>
-                                <li>Calendar & Events:
->>>>>>> 3a1f0b19603bb2d5e7a828a42fe5822cce561812
                                     <strong><a href="http://www.usna.usda.gov/Education/events.html">US National Arbor.</a>
                                     </strong>
                                 </li>
@@ -577,7 +454,6 @@ mysqli_close($con);
                             <hr class="star-primary">
                             <img src="img/portfolio/game.png" class="img-responsive img-centered" alt="">
                             <p> Interested in learning more about exotic plants and how to obtain them. Read more</p>
-<<<<<<< HEAD
 				 <p>Exotic plants, or <strong>introduced plants</strong> are plant species that are introduced to a region in which they are not native. Many cultivate plants are used as ornamentals and are often considered <a href="http://horticultureandsoilscience.wikia.com/wiki/Invasive_Plants">invasive species</p>
                             <ul class="list-inline item-details">
 				 <li>Wikia:
@@ -589,19 +465,6 @@ mysqli_close($con);
                                     </strong>
                                 </li>
 				 <li>Learn more:
-=======
-			            <p>Exotic plants, or <strong>introduced plants</strong> are plant species that are introduced to a region in which they are not native. Many cultivate plants are used as ornamentals and are often considered <a href="http://horticultureandsoilscience.wikia.com/wiki/Invasive_Plants">invasive species</p>
-                            <ul class="list-inline item-details">
-                                <li>Wikia:
-                                    <strong><a href="http://horticultureandsoilscience.wikia.come/wiki/Invasive_Plants">Invasive Plants</a>
-                                    </strong>
-                                </li>
-                                <li>Date:
-                                    <strong><a href="http://startbootstrap.com">April 2014</a>
-                                    </strong>
-                                </li>
-                                <li>Learn more:
->>>>>>> 3a1f0b19603bb2d5e7a828a42fe5822cce561812
                                     <strong><a href="http://exoticplantsltd.com">Exotic Plants</a>
                                     </strong>
                                 </li>
@@ -628,7 +491,6 @@ mysqli_close($con);
                             <h2>Taking Care of Your Plant</h2>
                             <hr class="star-primary">
                             <img src="img/portfolio/safe.png" class="img-responsive img-centered" alt="">
-<<<<<<< HEAD
 				 <p>Most succulents need half a day to a full day of sunlight. The soil level should be on the same depth on the plant. It is important to water your succulent thoroughly.  Fertilizer should be used sparsely, about once a month is all they need.</p>
                             <ul class="list-inline item-details">
 				 <li>Simply Succulents:
@@ -640,19 +502,6 @@ mysqli_close($con);
                                     </strong>
                                 </li>
 				 <li>General Plant Care:
-=======
-                            <p>Most succulents need half a day to a full day of sunlight. The soil level should be on the same depth on the plant. It is important to water your succulent thoroughly.  Fertilizer should be used sparsely, about once a month is all they need.</p>
-                            <ul class="list-inline item-details">
-                                <li>Simply Succulents:
-                                    <strong><a href="https://simplysucculents.com/plant-care-information/">Plant Care Information</a>
-                                    </strong>
-                                </li>
-                                <li>Date:
-                                    <strong><a href="http://startbootstrap.com">April 2014</a>
-                                    </strong>
-                                </li>
-                                <li>General Plant Care:
->>>>>>> 3a1f0b19603bb2d5e7a828a42fe5822cce561812
                                     <strong><a href="http://www.ambius.com/learn/online/top-tips/index.html">Learn more</a>
                                     </strong>
                                 </li>
@@ -679,11 +528,7 @@ mysqli_close($con);
                             <h2>Flowers and their Endless Beauty</h2>
                             <hr class="star-primary">
                             <img src="img/portfolio/submarine.png" class="img-responsive img-centered" alt="">
-<<<<<<< HEAD
 				 <p>Flowers are the reproductive part of the plant. They are known to have an aromatic scent when they output maximal levels of pollen. Each type of flower is extremely unique; they have different types of petals, scents and nutritional requirements. Some plants (like <a href="http://sunbulb.com/info/wp-content/uploads/2010/08/orchids.jpg">orchids</a>) don't even need soil to grow!</p>
-=======
-                            <p>Flowers are the reproductive part of the plant. They are known to have an aromatic scent when they output maximal levels of pollen. Each type of flower is extremely unique; they have different types of petals, scents and nutritional requirements. Some plants (like <a href="http://sunbulb.com/info/wp-content/uploads/2010/08/orchids.jpg">orchids</a>) don't even need soil to grow!</p>
->>>>>>> 3a1f0b19603bb2d5e7a828a42fe5822cce561812
                            <ul class="list-inline item-details">
                                 <li>Source:
                                     <strong><a href="http://www.avasflowers.net/facts-about-flowers-for-kids">Facts about Flowers</a>

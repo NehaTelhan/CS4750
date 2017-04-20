@@ -52,7 +52,10 @@
                         <a href="#page-top"></a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#portfolio">Explore!</a>
+                        <a href="#portfolio">Explore</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#search"> Plant Search </a>
                     </li>
                     <li class="page-scroll">
                         <a href="#about">Arboretums Search</a>
@@ -60,10 +63,12 @@
                     <li class="page-scroll">
                         <a href="viewProfile.php">View Profile</a>
                     </li>
+                    <li class="page-scroll">
+                        <a href="Logout.php">Logout</a>
+                    </li>
        <br>
                     <li class="page-scroll">
                         <a>
-
 
 
 
@@ -197,15 +202,32 @@ else {
                     <a href="#portfolioModal6" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
-                                <i class="fa fa-search-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="img/portfolio/daisies.jpg" class="img-responsive" alt="Daisies">
-                    </a>
-                </div>
+                                <I CLASS="FA FA-SEARCH-PLUS FA-3X"></I>
+                            </DIV>
+                        </DIV>
+                        <IMG SRC="IMG/PORTFOLIO/DAISIES.JPG" CLASS="IMG-RESPONSIVE" ALT="DAISIES">
+                    </A>
+                </DIV>
             </div>
         </div>
     </section>
+
+<!-- PLANT SEARCH SECTION!!!!!! -->
+<section class="success" id="search">
+<div class="container">
+    <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Plant Search</h2>
+                    <hr class="star-light">
+                </div>
+            </div>
+
+    <div class="row">
+        <div class="col-lg-4 col-lg-offset-4">
+             <p> "Where the search bar would go.." </p>
+    </div>
+  
+</section>
 
     <!-- ARBORTEUM SECTION!!!!!!!!!!!!!!!! -->
     <section class="success" id="about">
