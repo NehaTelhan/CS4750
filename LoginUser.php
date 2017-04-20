@@ -66,55 +66,6 @@
                     <li class="page-scroll">
                         <a href="Logout.php">Logout</a>
                     </li>
-       <br>
-                    <li class="page-scroll">
-                        <a>
-
-
-
-
-
-
-   <!--THIS IS ASSOCIATED WITH CHECKING LOG IN CREDENTIALS TO TAKE USER TO NEXT PAGE -->
-<?php
-include_once("./library.php"); // To connect to the database
-
-$con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
-// Check connection
-if (mysqli_connect_errno())
-  {
-    echo "Failed to connect to MySQL: " . mysqli_connect_error();
-  }
-
-session_start();
-//Make the variables you'll need from post request.
-$email = $_POST['email'];
-$password = $_POST['password'];
-$hashed_password = password_hash($password, PASSWORD_DEFAULT).
-
-//REMEMBER, the HASHED PASSWORD is stored in the database
-
-  // What I want to do is get the UID associated with this e-mail address and check to see the hashed password we have saved matches the password
-$query1 = mysqli_query("SELECT Email FROM User WHERE Email = '$email' ");
-$query2 = mysqli_query("SELECT Password FROM User WHERE Email = '$email' " );
-
-$pass = password_verify($password,$hashed_password);
-
-if ($email == $query1 || $pass ) {
-  $_SESSION["logged_in"] = true;
-  $_SESSION["email"] = $email;
-  echo "You have successfully logged in as $email.";
-}
-else {
-  echo "Invalid Login";
-  }                       ?>
-
-
-
-
-
-                      </a>
-                    </li> </br>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -129,7 +80,48 @@ else {
                 <div class="col-lg-12">
                     <div class="intro-text">
                         <h1 class="name">Login Success!</h1>
-                        <img class="img-responsive" src="img/baby_groot.jpg" alt="">  
+
+
+<p>
+<?php
+   include_once("./library.php"); // To connect to the database                                                                                                                        
+
+$con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
+// Check connection                                                                                                                                                                 
+if (mysqli_connect_errno())
+  {
+    echo "Failed to connect to MySQL: " . mysqli_connect_error();
+  }
+
+session_start();
+//Make the variables you'll need from post request.                                                                                                                                 
+$email = $_POST['email'];
+$password = $_POST['password'];
+$hashed_password = password_hash($password, PASSWORD_DEFAULT).
+
+  //REMEMBER, the HASHED PASSWORD is stored in the database                                                                                                                           
+
+  // What I want to do is get the UID associated with this e-mail address and check to see the hashed password we have saved matches the password                                   
+  $query1 = mysqli_query("SELECT Email FROM User WHERE Email = '$email' ");
+$query2 = mysqli_query("SELECT Password FROM User WHERE Email = '$email' " );
+
+$pass = password_verify($password,$hashed_password);
+
+if ($email == $query1 || $pass ) {
+  $_SESSION["logged_in"] = true;
+  $_SESSION["email"] = $email;
+  echo "You have successfully logged in as $email.";
+}
+else {
+  echo "Invalid Login";
+}                       
+
+?></p>
+
+
+                        <div class="text-center">
+                        <h1>Click on Baby Groot to start your botanist journey!</h1></div>
+                        <a href="Homepage.php"><<img class="img-responsive" src="img/baby_groot.jpg" alt=""/></a>  
                         <hr class="star-light">
                         <span class="skills">Explore - Search - Research - Discover</span>
                     </div>
@@ -198,35 +190,49 @@ else {
                         <img src="img/portfolio/care_succulent.jpg" class="img-responsive" alt="care_succulent">
                     </a>
                 </div>
-                <div class="col-sm-4 portfolio-item">
+                                <div class="col-sm-4 portfolio-item">
                     <a href="#portfolioModal6" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
-                                <I CLASS="FA FA-SEARCH-PLUS FA-3X"></I>
-                            </DIV>
-                        </DIV>
-                        <IMG SRC="IMG/PORTFOLIO/DAISIES.JPG" CLASS="IMG-RESPONSIVE" ALT="DAISIES">
-                    </A>
-                </DIV>
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="img/portfolio/daisies.jpg" class="img-responsive" alt="Daisies">
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
 <!-- PLANT SEARCH SECTION!!!!!! -->
 <section class="success" id="search">
-<div class="container">
-    <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2>Plant Search</h2>
+  <div class="row">
+                    <div class="col-lg-12 text-center">
+                    <h2>  Plant Search</h2>
                     <hr class="star-light">
                 </div>
+         <div class="container">
+  <div class="row">
+        <div class="col-md-12">
+ <div class="text-center" >
+<p>Enter anything you know about the plant!</p>
+  </div>
+   <form action="PlantSelect.php" method="post">
+            <div id="custom-search-input">
+                <div class="input-group col-md-12">
+                    <input type="text" class="form-control input-lg" placeholder="Type To Search" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-info btn-lg" type="button">
+                          <i class="glyphicon glyphicon-search"> </i>
+                        </button>
+                    </span>
+                </div>
             </div>
-
-    <div class="row">
-        <div class="col-lg-4 col-lg-offset-4">
-             <p> "Where the search bar would go.." </p>
-    </div>
-  
+</form>
+        </div>
+  </div>
+</div>
+</div>
 </section>
 
     <!-- ARBORTEUM SECTION!!!!!!!!!!!!!!!! -->
@@ -553,4 +559,3 @@ else {
 </body>
 
 </html>
->>>>>>> 4ae33ddad888dde94bd82851cbe68ef26523ae7e

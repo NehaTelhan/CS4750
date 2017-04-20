@@ -52,7 +52,10 @@
                         <a href="#page-top"></a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#portfolio">Explore!</a>
+                        <a href="#portfolio">Explore</a>
+                    </li>
+ <li class="page-scroll">
+                        <a href="#search">Plant Search</a>
                     </li>
                     <li class="page-scroll">
                         <a href="#about">Arboretums Search</a>
@@ -142,7 +145,7 @@ mysqli_close($con);
   <!-- The form should work on most web servers, but if the form is not working you may need to configure your web server differently-->
 
       <form action="UserLives.php" method="post">
-              <!--Enter State info !-->
+              <p>Enter Your State </p>
               <div class="row control-group">
   <div class="form-group col-xs-12 floating-label-form-group controls">
     <input type="text" class="form-control" placeholder="State" id="state" name="state" required data-validation-required-message="Please enter your State of residence.">
@@ -150,13 +153,22 @@ mysqli_close($con);
   </div>
               </div>
 
-              <!--Enter Region info !-->
-              <div class="row control-group">
-  <div class="form-group col-xs-12 floating-label-form-group controls">
-                  <input type="text" class="form-control" placeholder="Region" id="region" name="region" required data-validation-required-message="Please enter your Region of residence.">
-                  <p class="help-block text-danger"></p>
-  </div>
-              </div>
+              <p>Select Your Region</p>              
+   <div class="row control-group">
+    <div class="form-group col-xs-12 floating-label-form-group controls">
+  <select class="selectpicker">
+            <option value=""></option>
+            <option value="Northeast">Northeast</option>
+            <option value="Mideast">Mideast</option>
+            <option value="Great Lakes">Great Lakes</option>  
+            <option value="Plains">Plains</option>
+            <option value="Southeast">Southeast</option>
+            <option value="Southwest">Southwest</option>
+            <option value="Rocky Mountains">Rocky Mountains</option>
+            <option value="Far West">Far West</option>
+</select>
+ </div>
+</div>
 
             <!-- Submit button !-->
             <br>
@@ -245,6 +257,39 @@ mysqli_close($con);
             </div>
         </div>
     </section>
+
+<!-- PLANT SEARCH SECTION!!!!!! -->
+<section class="success" id="search">
+  <div class="row">
+                    <div class="col-lg-12 text-center">
+                    <h2>  Plant Search</h2>
+                    <hr class="star-light">
+                </div>
+         <div class="container">
+  <div class="row">
+        <div class="col-md-12">
+ <div class="text-center" >
+<p>Enter anything you know about the plant!</p>
+  </div>
+   <form action="PlantSelect.php" method="post">
+            <div id="custom-search-input">
+                <div class="input-group col-md-12">
+                    <input type="text" class="form-control input-lg" placeholder="Type To Search" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-info btn-lg" type="button">
+                          <i class="glyphicon glyphicon-search"> </i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+</form>
+        </div>
+  </div>
+</div>
+</div>
+</section>
+
+
 
     <!-- ARBORTEUM SECTION!!!!!!!!!!!!!!!! -->
     <section class="success" id="about">
