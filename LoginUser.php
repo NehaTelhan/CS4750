@@ -102,7 +102,7 @@ $pass = password_verify($password,$hashed_password);
 
 if ($email == $query1 || $pass ) {
   $_SESSION["logged_in"] = true;
-  $_SESSION["email"] = $email;
+  $_SESSION["Email"] = $email;
   echo "You have successfully logged in as $email.";
 }
 else {
