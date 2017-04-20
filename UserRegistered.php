@@ -66,47 +66,6 @@
        <li class="page-scroll">
                         <a href="Logout.php">Log Out</a>
                     </li>
-           <br>
-                    <li class="page-scroll">
-                        <a>
-
-
-
-                          <!--User Insert!-->
-   <?php
-   include_once("./library.php"); // To connect to the database
-$con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
-// Check connection
-if (mysqli_connect_errno())
-  {
-    echo "Failed to connect to MySQL: " . mysqli_connect_error();
-  }
-// Form the SQL query (an INSERT query)
-$first_name = $_POST['firstname'];
-$last_name = $_POST['lastname'];
-$email = $_POST['email'];
-$password = $_POST['password'];
-$hashed_password = password_hash('$password', PASSWORD_DEFAULT).
-
-session_start();
-$_SESSION["Email"] = $email;
-//echo $_SESSION["Email"];
-
-$sql="INSERT INTO User (First_Name, Last_Name, Email, Password) VALUES ('$first_name', '$last_name', '$email', '$hashed_password')";
-
-if (!mysqli_query($con,$sql))
-  {
-    die('Error: ' . mysqli_error($con));
-  }
-else
-  {
-    echo "Welcome $first_name. You are logged in as $email.";
-  }
-mysqli_close($con);
-                        ?>
-
-                      </a>
-                    </li> </br>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -122,6 +81,42 @@ mysqli_close($con);
                     <!--img class="img-responsive" src="img/baby_groot.jpg" alt=""!-->
                     <div class="intro-text">
                         <h1 class="name">Registration Success!</h1>
+
+
+                          <!--User Insert!-->
+  <p> <?php
+   include_once("./library.php"); // To connect to the database                                                                                                                      
+$con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
+// Check connection                                                                                                                                                                  
+if (mysqli_connect_errno())
+  {
+    echo "Failed to connect to MySQL: " . mysqli_connect_error();
+  }
+// Form the SQL query (an INSERT query)                                                                                                                                              
+$first_name = $_POST['firstname'];
+$last_name = $_POST['lastname'];
+$email = $_POST['email'];
+$password = $_POST['password'];
+$hashed_password = password_hash('$password', PASSWORD_DEFAULT).
+
+  session_start();
+$_SESSION["Email"] = $email;
+//echo $_SESSION["Email"];                                                                                                                                                           
+
+$sql="INSERT INTO User (First_Name, Last_Name, Email, Password) VALUES ('$first_name', '$last_name', '$email', '$hashed_password')";
+
+if (!mysqli_query($con,$sql))
+  {
+    die('Error: ' . mysqli_error($con));
+  }
+else
+  {
+    echo "Welcome $first_name. You are registered as $email.";
+  }
+mysqli_close($con);
+                        ?> </p>
+
+
                         <hr class="star-light">
                         <span class="skills">Explore - Search - Research - Discover</span>
                     </div>
