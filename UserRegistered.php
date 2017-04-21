@@ -81,10 +81,8 @@
                     <!--img class="img-responsive" src="img/baby_groot.jpg" alt=""!-->
                     <div class="intro-text">
                         <h1 class="name">Registration Success!</h1>
-
-
                           <!--User Insert!-->
-  <p> <?php
+ <p>  <?php
    include_once("./library.php"); // To connect to the database                                                                                                                      
 $con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
 // Check connection                                                                                                                                                                  
