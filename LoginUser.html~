@@ -120,8 +120,6 @@ else {
 
 
                         <div class="text-center">
-                        <h1>Click on Baby Groot to start your botanist journey!</h1></div>
-                        <a href="Homepage.php"><<img class="img-responsive" src="img/baby_groot.jpg" alt=""/></a>  
                         <hr class="star-light">
                         <span class="skills">Explore - Search - Research - Discover</span>
                     </div>
@@ -215,8 +213,11 @@ else {
   <div class="row">
         <div class="col-md-12">
  <div class="text-center" >
-<p>Enter anything you know about the plant!</p>
+<p>Search plant by common name</p>
   </div>
+
+
+<!-- #######OLD PLANT SEARCH ######## -->
    <form action="PlantSelect.php#search" method="POST">
             <div id="custom-search-input">
                 <div class="input-group col-md-12">
@@ -229,35 +230,105 @@ else {
                 </div>
             </div>
 </form>
+<!-- ######## --> 
+
+<!--### AJAX WAY #### -->
+<head>
+    <script src="jquery-1.6.2.min.js" type="text/javascript"></script>
+    <script src="jquery-ui-1.8.16.custom.min.js" type="text/javascript"></script>
+    <title>Sailor Search</title>
+    <script>
+      $(document).ready(function() {
+      $( "#searchNameinput" ).change(function() {
+
+      $.ajax({
+      url: 'PlantSelect.php',
+      data: {searchName: $( "#searchNameinput" ).val()},
+      success: function(data){
+      $('#searchNameresult').html(data);
+
+      }
+      });
+      });
+
+      });
+      </script>
+</head>
+<body>
+  <h3>Search substring of sname in Sailors Table</h3>
+
+  <input class="xlarge" id="searchNameinput" type="search" size="100" placeholder="Sailor's Name Contains"/>
+
+  <div id="searchNameresult">Search Result</div>
+
+  <br/><br/>
+
+</body>
+<!-- ## AJAX WAY ## -->
+
+
+
         </div>
-  </div>
-</div>
 </div>
 </section>
 
-    <!-- ARBORTEUM SECTION!!!!!!!!!!!!!!!! -->
-    <section class="success" id="about">
+    <!-- ARBORTEUM SECTION!!!!!!!!!!!!!!!! -->    
+<section class="success" id="">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2>Arboretum Search</h2>
+                    <h2>   Arboretum Search  </h2>
                     <hr class="star-light">
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-4 col-lg-offset-2">
-                    <p> Insert Something Here Like a Search Bar ...IDK</p>
-                </div>
-                <div class="col-lg-4">
-                    <p>Whether you're a student looking to showcase your work, a professional looking to attract clients, or a graphic artist looking to share your projects, this template is the perfect starting point!</p>
-                </div>
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <a href="#" class="btn btn-lg btn-outline">
-                        <i class="fa fa-download"></i> Download Theme
-                    </a>
+	    <div class="container">
+            <div class="row">      
+              <div class ="col-md-12">
+		<div class="text-center">
+	      <p> Search Arboretum by State or Region</p>   
+        </div>
+
+<!--Enter State name -->
+   <form action="LoginUser.php" method="POST">
+            <div id="custom-search-input">
+                <div class="input-group col-md-12">
+                    <input type="text" id="state" name="state" class="form-control input-lg" required data-validation-required-message="" placeholder="Enter the full name of the State" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-info btn-lg" type="submit" </button>
+                          <i class="glyphicon glyphicon-search"> </i>
+                        </button>
+                    </span>
                 </div>
             </div>
-        </div>
+</form>
+
+<!-- Pick region -->
+ <p>Select Your Region</p>
+   <div class="row control-group">
+    <div class="form-group col-xs-12 floating-label-form-group controls">
+  <select class="selectpicker">
+            <option value=""></option>
+            <option value="Northeast">Northeast</option>
+            <option value="Mideast">Mideast</option>
+            <option value="Great Lakes">Great Lakes</option>
+            <option value="Plains">Plains</option>
+            <option value="Southeast">Southeast</option>
+            <option value="Southwest">Southwest</option>
+            <option value="Rocky Mountains">Rocky Mountains</option>
+            <option value="Far West">Far West</option>
+</select>
+ </div>
+</div>
+<!-- Submit button !-->
+            
+            <div id="success"></div>
+            <div class="row">
+              <div class="form-group col-xs-12">
+                <button type="submit" class="btn btn-success btn-lg" href="UserLives.php" >Submit</button>
+              </div>
+            </div>
+
+
     </section>
 
     <!-- Footer -->
