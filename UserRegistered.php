@@ -83,7 +83,8 @@
                         <h1 class="name">Registration Success!</h1>
                           <!--User Insert!-->
  <p>  <?php
-   include_once("./library.php"); // To connect to the database                                                                                                                      
+   include_once("./library.php"); // To connect to the database                             
+                                                                                         
 $con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
 // Check connection                                                                                                                                                                  
 if (mysqli_connect_errno())
@@ -97,9 +98,9 @@ $email = $_POST['email'];
 $password = $_POST['password'];
 $hashed_password = password_hash('$password', PASSWORD_DEFAULT).
 
-  session_start();
+session_start();
 $_SESSION["Email"] = $email;
-//echo $_SESSION["Email"];                                                                                                                                                           
+
 
 $sql="INSERT INTO User (First_Name, Last_Name, Email, Password) VALUES ('$first_name', '$last_name', '$email', '$hashed_password')";
 
