@@ -14,29 +14,45 @@ if (mysqli_connect_errno())
 // Form the SQL query (an INSERT query)
 $email = $_SESSION['Email'];
 
-$query = "SELECT UID FROM User WHERE Email=$email;";
-$result = $con->query($query);
+$query = "SELECT UID,Email FROM User";
+$result = $con->query($query) or die ("Invalid Selection" . $con->error);
 
-echo "QUERY: ";
+$rows = $result->num_rows;
+
+for ($i=0; $i<$rows; $i++) {
+  if ($result->fetch_array()['Email']==$email){
+    $uid = $result->fetch_array()['UID'];
+    echo "$uid is the User Id";
+  }
+}
+  
+      //if ($result = $con->query("SELECT UID FROM User")) {
+
+  /*determine number of tows result set*/
+  //$row_count = $result->num_rows;
+  
+  //printf("Result set has %d rows. \n", $row_count;)
+
+  /*close result set*/
+  //$result->close();
+      //}
+
+/*echo "QUERY: ";
 print_r($query); //Returns" SELECT UID FROM User WHERE Email=_________;"
 
 echo "RESULT: ";
 print_r($result); //Returns Nothing
 
 echo "SESSION[Email]: "; // Returns SESSION[Email]:__________
-print_r($_SESSION['Email']);
+print_r($_SESSION['Email']);*/
 
-//$row = $result->fetch_array(MYSQLI_ASSOC);
-$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-printf ("%s (%s)\n", $row["UID"]);
-
-//echo "RESULT -> $result";
-//echo "EMAIL -> $email";
+//$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+//printf("%s (%s)\n", $row["UID"]);
 
 
 $state = $_POST['state'];
 $region = $_POST['region'];
-$sql="INSERT INTO Lives (UID, State, Region) VALUES ('$user_uid', '$state', '$region')";
+$sql="INSERT INTO Lives (UID, State, Region) VALUES ('$uid', '$state', '$region')";
 
 if (!mysqli_query($con,$sql))
   {
