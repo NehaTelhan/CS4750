@@ -17,8 +17,14 @@ $email = $_SESSION['Email'];
 $query = "SELECT UID FROM User WHERE Email=$email;";
 $result = $con->query($query);
 
-print_r($query); //Returns" SELECT UID FROM User WHERE Email=Dalt@Smith.com;"
+echo "QUERY: ";
+print_r($query); //Returns" SELECT UID FROM User WHERE Email=_________;"
+
+echo "RESULT: ";
 print_r($result); //Returns Nothing
+
+echo "SESSION[Email]: "; // Returns SESSION[Email]:__________
+print_r($_SESSION['Email']);
 
 //$row = $result->fetch_array(MYSQLI_ASSOC);
 $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
