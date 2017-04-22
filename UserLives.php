@@ -25,29 +25,6 @@ for ($i=0; $i<$rows; $i++) {
     echo "$uid is the User Id";
   }
 }
-  
-      //if ($result = $con->query("SELECT UID FROM User")) {
-
-  /*determine number of tows result set*/
-  //$row_count = $result->num_rows;
-  
-  //printf("Result set has %d rows. \n", $row_count;)
-
-  /*close result set*/
-  //$result->close();
-      //}
-
-/*echo "QUERY: ";
-print_r($query); //Returns" SELECT UID FROM User WHERE Email=_________;"
-
-echo "RESULT: ";
-print_r($result); //Returns Nothing
-
-echo "SESSION[Email]: "; // Returns SESSION[Email]:__________
-print_r($_SESSION['Email']);*/
-
-//$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
-//printf("%s (%s)\n", $row["UID"]);
 
 
 $state = $_POST['state'];
@@ -57,7 +34,6 @@ $sql="INSERT INTO Lives (UID, State, Region) VALUES ('$uid', '$state', '$region'
 if (!mysqli_query($con,$sql))
   {
     die('Error: ' . mysqli_error($con));
-    echo "$user_id";
   }
 else
   {

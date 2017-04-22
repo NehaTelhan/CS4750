@@ -92,17 +92,32 @@ session_start();
 //Make the variables you'll need from post request.
 $email = $_POST['email'];
 $password = $_POST['password'];
-$hashed_password = password_hash($password, PASSWORD_DEFAULT).
-
-  //REMEMBER, the HASHED PASSWORD is stored in the database
+$hashed_password = password_hash($password, PASSWORD_DEFAULT);
+//REMEMBER, the HASHED PASSWORD is stored in the database
 
   // What I want to do is get the UID associated with this e-mail address and check to see the hashed password we have saved matches the password
-  $query1 = mysqli_query("SELECT Email FROM User WHERE Email = '$email' ");
-$query2 = mysqli_query("SELECT Password FROM User WHERE Email = '$email' " );
+$query1 = "SELECT UID,First_Name,Last_Name,Email,Password FROM User";
+
+$result1 = $con->query($query1) or die ("Invalid Selection" . $con->error);
+
+$rows1 = $result1->num_rows;
+
+for ($i=0; $i<$rows1; $i++) {
+  if ($result1->fetch_array()['Email']==$email) {
+    $_SESSION['Logged_in'] = true;
+    $_Session['Email'] = $email;
+    $_Session['UID'] = $result1->fetch_array()['UID'];
+    $_SESSION['First_Name'] = $result1->fetch_array()['First_Name'];
+    $_SESSION['Last_Name'] = $result1->fetch_array()['Last_Name'];
+  }
+  else {
+    echo "Invalid Login.";
+  }
+}
 
 $pass = password_verify($password,$hashed_password);
 
-if ($email == $query1 || $pass ) {
+/*if ($email == $query1 || $pass ) {
   $_SESSION["logged_in"] = true;
   $_SESSION["Email"] = $email;
   echo "Name: $first_name $last_name";
@@ -112,7 +127,7 @@ if ($email == $query1 || $pass ) {
 }
 else {
   echo "Invalid Login";
-}
+  }*/
 
 ?></p>
 
@@ -211,7 +226,8 @@ else {
         <div class="col-md-12">
           <div class="text-center" >
             <p>Add Allergies</p>
-            <form action="viewProfile.php#search" method="post">
+  <!-- //               <form action="viewProfile.php#search" method="post"> -->
+                <form action="InsertAllergy.php" method="post">
                           <div class="row control-group">
                                 <div class="form-group col-xs-12 floating-label-form-group controls">
 
@@ -235,23 +251,41 @@ else {
                                     }
                                   // Form the SQL query (an INSERT query)
                                   $allergy_name = $_POST['plantname'];
+session_start();
+printr($_SESSION);
+$uid = $_SESSION['UID'];
 
-                                  session_start();
-                                  $_SESSION["Email"] = $email;
-                                  //echo $_SESSION["Email"];
+$query = "SELECT PID,Common_Name FROM Plant";
+$result = $con->query($query) or die ("Invalid Selection" . $con->error);
 
-                                  $sql="INSERT INTO Allergy () VALUES ()";
+$rows = $result->num_rows;
 
-                                  if (!mysqli_query($con,$sql))
-                                    {
-                                      die('Error: ' . mysqli_error($con));
-                                    }
-                                  else
-                                    {
-                                      //echo 
-                                    }
-                                  mysqli_close($con);
-                                                          ?>
+for ($i=0; $i<$rows; $i++) {
+  if ($result->fetch_array()['Common_Name']==$allergy_name) {
+    $pid = $result->fetch_array()['PID'];
+    $sql="INSERT INTO Allergic_to (UID, PID) VALUES ('$uid', '$pid')";
+  }
+  else 
+    {
+      echo "Failed to Insert";
+    }
+}
+$_SESSION['Email'] = $email;
+                                  
+echo $_SESSION["Email"];
+echo "UID: $uid";
+
+//                  $sql="INSERT INTO Allergic_To (UID) VALUES ()";
+
+if (!mysqli_query($con,$sql))
+  {
+    die('Error: ' . mysqli_error($con));
+  }
+else
+  {
+    //echo 
+  }
+ mysqli_close($con);
 ?>
 
                                  </div>

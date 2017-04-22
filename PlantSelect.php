@@ -1,7 +1,11 @@
-
-
 <?php
 
+/* 
+
+   THIS IS ASHLEY'S ATTEMPT I AM COMMENTING OUT TO TRY OUT MY OWN METHODS
+
+
+session_start();
 
 require "dbconnect.php"; // To connect to the database
 $db = DbUtil::loginConnection();
@@ -27,6 +31,64 @@ while($stmt->fetch()) {
 
 $db->close();
 //mysqli_close($con);
+*/
+
+
+session_start();
+print_r($_SESSION);
+
+include_once("./library.php"); // To connect to the database
+
+$con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
+//$con=mysqli_connect($SERVER, $USERNAME, $PASSWORD, $DATABASE);
+
+// Check connection
+if (mysqli_connect_errno())
+  {
+    echo "Failed to connect to MySQL: " . mysqli_connect_error();
+  }
+
+// Form the SQL query (an INSERT query)
+$email = $_SESSION['Email'];
+//echo "E-MAIL: $email"; //This means the session is not connected to a logged in user right now
+
+$plant_search = $_POST['commonname'];
+echo "Searching for $plant_search ....";
+
+//$query = "SELECT PID, Symbol, Genus, Species, Common_Name, Family FROM Plant";
+$query = "SELECT PID FROM Plant";
+$result = $con->query($query) or die ("Invalid Selection." . $con->error);
+
+$rows = $result->$num_rows;
+
+echo $num_rows;
+
+for ($i-0; $i<$rows; $i++) {
+  if ($result->fetch_array()['Common_Name']==$plant_search || 
+      $result->fetch_array()['Genus']==$plant_search || 
+      $result->fetch_array()['Species']==$plant_search || 
+      $result->fetch_array()['Family']==$plant_search) {
+    $pid = $result->fetch_array()['PID'];
+    $symbol = $result->fetch_array()['Symbol'];
+    $genus = $result->fetch_array()['Genus'];
+    $species = $result->fetch_array()['Species'];
+    $common_name = $result->fetch_array()['Common_Name'];
+    $family = $result->fetch_array()['Family'];
+
+    echo "Plant:   $pid $symbol $genus $species $common_name $family";
+  }
+}
+
+if (!mysqli_query($con,$sql))
+  {
+    die('Error: ' . mysqli_error($con));
+  }
+else
+  {
+    echo "Residential Information Added!";
+    echo "You live in the state $state and the region $region";
+  }
+mysqli_close($con);
 
 ?>
 
