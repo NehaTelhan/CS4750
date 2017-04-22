@@ -4,32 +4,33 @@ print_r($_SESSION);
 
 include_once("./library.php"); // To connect to the database
 $con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
+//$con=mysqli_connect($SERVER, $USERNAME, $PASSWORD, $DATABASE);
 // Check connection
 if (mysqli_connect_errno())
   {
     echo "Failed to connect to MySQL: " . mysqli_connect_error();
   }
+
 // Form the SQL query (an INSERT query)
 $email = $_SESSION['Email'];
-$paren = "'";
 
-echo "$paren$email$paren";
+$query = "SELECT UID FROM User WHERE Email=$email;";
+$result = $con->query($query);
 
-$user_uid = mysqli_query("SELECT UID FROM User WHERE Email = $paren$email$paren");
-//$uid = "SELECT UID FROM User WHERE Email=$email";
-//$result = $conn->query($uid);
+print_r($query); //Returns" SELECT UID FROM User WHERE Email=Dalt@Smith.com;"
+print_r($result); //Returns Nothing
 
-//echo "Result.$result";
+//$row = $result->fetch_array(MYSQLI_ASSOC);
+$row = mysqli_fetch_array($result, MYSQLI_ASSOC);
+printf ("%s (%s)\n", $row["UID"]);
 
-echo "EMAIL -> $email";
-echo "USER_ID -> $user_uid";
+//echo "RESULT -> $result";
+//echo "EMAIL -> $email";
+
 
 $state = $_POST['state'];
 $region = $_POST['region'];
 $sql="INSERT INTO Lives (UID, State, Region) VALUES ('$user_uid', '$state', '$region')";
-
-$query1 = mysqli_query("SELECT Email FROM User WHERE Email = '$email' ");
-echo "QUERY1:$query1";
 
 if (!mysqli_query($con,$sql))
   {
