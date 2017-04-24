@@ -1,4 +1,4 @@
-<?php
+'<?php
 session_start();
 print_r($_SESSION);
 
@@ -28,8 +28,8 @@ for ($i=0; $i<$rows; $i++) {
 
 
 $state = $_POST['state'];
-$region = $_POST['region'];
-$sql="INSERT INTO Lives (UID, State, Region) VALUES ('$uid', '$state', '$region')";
+//$region = $_POST['region'];
+$sql="INSERT INTO Lives (UID, State) VALUES ('$uid', '$state')";
 
 if (!mysqli_query($con,$sql))
   {
@@ -38,7 +38,7 @@ if (!mysqli_query($con,$sql))
 else
   {
     echo "Residential Information Added!";
-    echo "You live in the state $state and the region $region";
+    echo "You live in the state $state";
   }
 mysqli_close($con);
 ?>
