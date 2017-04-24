@@ -83,15 +83,15 @@
                         <h1 class="name">Registration Success!</h1>
                           <!--User Insert!-->
  <p>  <?php
-   include_once("./library.php"); // To connect to the database                             
-                                                                                         
+   include_once("./library.php"); // To connect to the database
+
 $con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
-// Check connection                                                                                                                                                                  
+// Check connection
 if (mysqli_connect_errno())
   {
     echo "Failed to connect to MySQL: " . mysqli_connect_error();
   }
-// Form the SQL query (an INSERT query)                                                                                                                                              
+// Form the SQL query (an INSERT query)
 $first_name = $_POST['firstname'];
 $last_name = $_POST['lastname'];
 $email = $_POST['email'];
@@ -148,22 +148,6 @@ mysqli_close($con);
     <p class="help-block text-danger"></p>
   </div>
               </div>
-
-              <p>Select Your Region</p>              
-   <div class="row control-group">
-    <div class="form-group col-xs-12 floating-label-form-group controls">
-  <select class="selectpicker">
-            <option value=""></option>
-            <option value="Northeast">Northeast</option>
-            <option value="Mideast">Mideast</option>
-            <option value="Great Lakes">Great Lakes</option>  
-            <option value="Plains">Plains</option>
-            <option value="Southeast">Southeast</option>
-            <option value="Southwest">Southwest</option>
-            <option value="Rocky Mountains">Rocky Mountains</option>
-            <option value="Far West">Far West</option>
-</select>
- </div>
 </div>
 
             <!-- Submit button !-->
