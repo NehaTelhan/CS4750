@@ -1,0 +1,24 @@
+DELIMITER //
+CREATE TRIGGER `insertItems` AFTER UPDATE ON `items`
+ FOR EACH ROW BEGIN
+    UPDATE User
+    SET 'Has_Allergy'=1
+    WHERE User.UID = NEW.UID;
+END
+//
+DELIMITER ;
+
+
+
+BEGIN
+UPDATE User
+SET 'Has_Allergy'=1
+WHERE User.UID = Allergic_To.UID;
+END
+
+CREATE TRIGGER 'has_allergy_trigger' AFTER INSTERT ON 'Allergic_To'
+FOR EACH ROW BEGIN
+    UPDATE USER
+    SET 'Has_Allergy'=1
+    WHERE User.UID = NEW.UID
+END
