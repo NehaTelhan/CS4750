@@ -103,54 +103,87 @@
               <p>
 
 
-              <?php
-              include_once("./library.php"); // To connect to the database
-              $con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
 
-              // Check connection
-              if (mysqli_connect_errno())
-                {
-                  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-                }
+                <?php
+require_once('./library.php');
+$con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
 
-              session_start();
-              //print_r($_SESSION);
+session_start();
+//print_r($_SESSION);
 
-              if(isset($_SESSION['Email'])){
-                echo "Your session is running as " . $_SESSION['Email'];
-              }
+if(isset($_SESSION['Email'])){
+  echo "Your session is running as " . $_SESSION['Email'];
+}
+// Check connection
+if (mysqli_connect_errno()) {
+echo("Can't connect to MySQL Server. Error code: " .
+     mysqli_connect_error());
+return null;
+}
+// Form the SQL query (a SELECT query)
+$sql="SELECT firstname,lastname,email,hasallergy FROM User WHERE email=$_SESSION['Email']";
+$result = mysqli_query($con,$sql);
 
-              // // What I want to do is get the UID associated with this e-mail address and check to see the hashed password we have saved matches the password
-              $query1 = "SELECT firstname,lastname,email,hasallergy FROM User";
-              $result1 = $con->query($query1) or die ("Invalid Selection" . $con->error);
+// Print the data from the table row by row
+while($row = mysqli_fetch_array($result)) {
+echo $row['firstname'];
+echo " " . $row['lastname'];
+echo " " . $row['email'];
+echo " " . $row['hasallergy'];
+echo "<br>";
+}
+mysqli_close($con);
+?>
 
-              $rows1 = $result1->num_rows;
-              echo "ROWS: $rows1";
+              // include_once("./library.php"); // To connect to the database
+              // $con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
+              //
+              // // Check connection
+              // if (mysqli_connect_errno())
+              //   {
+              //     echo "Failed to connect to MySQL: " . mysqli_connect_error();
+              //   }
+              //
+              // session_start();
+              // //print_r($_SESSION);
+              //
+              // if(isset($_SESSION['Email'])){
+              //   echo "Your session is running as " . $_SESSION['Email'];
+              // }
+              //
+              // // // What I want to do is get the UID associated with this e-mail address and check to see the hashed password we have saved matches the password
+              // $query1 = "SELECT firstname,lastname,email,hasallergy FROM User";
+              // $result1 = $con->query($query1) or die ("Invalid Selection" . $con->error);
+              //
+              // $rows1 = $result1->num_rows;
+              // echo "ROWS: $rows1";
+              //
+              // for ($i=0; $i<$rows1; $i++) {
+              //   if ($result1->fetch_array()['email']==$_SESSION['Email']) {
+              //     //$_Session['uid'] = $result1->fetch_array()['UID'];
+              //     $_SESSION['First_Name'] = $result1->fetch_array()['firstname'];
+              //     $_SESSION['Last_Name'] = $result1->fetch_array()['lastname'];
+              //     $_SESSION['Email_1'] = $result1->fetch_array()['email'];
+              //     $_SESSION['Has_allergy'] = $result1->fetch_array()['hasallergy'];
+              //   }
+              //   else {
+              //     echo "Invalid Login.";
+              //   }
+              // }
+              //
+              // $print_first = $_SESSION['First_Name'];
+              // $print_last = $_SESSION['Last_Name'];
+              // $print_email = $_SESSION['Email_1'];
+              // $print_allergy = $_SESSION['Has_allergy'];
+              //
+              // echo "First Name: $print_first\n";
+              // echo "Last Name: $print_last\n";
+              // echo "Email: $print_email\n";
+              // echo "Allergy? $print_allergy\n";
 
-              for ($i=0; $i<$rows1; $i++) {
-                if ($result1->fetch_array()['email']==$_SESSION['Email']) {
-                  //$_Session['uid'] = $result1->fetch_array()['UID'];
-                  $_SESSION['First_Name'] = $result1->fetch_array()['firstname'];
-                  $_SESSION['Last_Name'] = $result1->fetch_array()['lastname'];
-                  $_SESSION['Email_1'] = $result1->fetch_array()['email'];
-                  $_SESSION['Has_allergy'] = $result1->fetch_array()['hasallergy'];
-                }
-                else {
-                  //echo "Invalid Login.";
-                }
-              }
 
-              $print_first = $_SESSION['First_Name'];
-              $print_last = $_SESSION['Last_Name'];
-              $print_email = $_SESSION['Email_1'];
-              $print_allergy = $_SESSION['Has_allergy'];
 
-              echo "First Name: $print_first\n";
-              echo "Last Name: $print_last\n";
-              echo "Email: $print_email\n";
-              echo "Allergy?: $print_allergy\n";
-
-              ?> </p>
+            </p>
 
             </div>
         </div>
