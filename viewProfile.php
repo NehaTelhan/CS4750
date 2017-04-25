@@ -116,19 +116,20 @@ if(isset($_SESSION['Email'])){
 }
 // Check connection
 if (mysqli_connect_errno()) {
-echo("Can't connect to MySQL Server. Error code: " .
-     mysqli_connect_error());
-return null;
+echo("Can't connect to MySQL Server. Error code: " . mysqli_connect_error());
 }
+
 // Form the SQL query (a SELECT query)
-$sql="SELECT firstname,lastname,email,hasallergy FROM User WHERE email=$_SESSION['Email']";
+$sql="SELECT * FROM User WHERE $_SESSION['Email']=email ";
 $result = mysqli_query($con,$sql);
 
 // Print the data from the table row by row
 while($row = mysqli_fetch_array($result)) {
-echo $row['firstname'];
+echo $row['uid'];
+echo " " . $row['firstname'];
 echo " " . $row['lastname'];
 echo " " . $row['email'];
+echo " " . $row['password'];
 echo " " . $row['hasallergy'];
 echo "<br>";
 }
