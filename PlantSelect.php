@@ -56,8 +56,8 @@ $plant_search = $_POST['commonname'];
 echo "Searching for $plant_search ....";
 
 //$query = "SELECT PID, Symbol, Genus, Species, Common_Name, Family FROM Plant";
-$query = "SELECT PID,Common_Name FROM Plant";
-$result = $con->query($query) or die ("Invalid Selection." . $con->error);
+$query = mysql_query("SELECT PID,Common_Name FROM Plant") or die (mysql_error());
+//$result = $con->query($query) or die ("Invalid Selection." . $con->error);
 
 while($rows = mysql_fetch_array($query)):
 
@@ -91,6 +91,7 @@ for ($i-0; $i<$rows; $i++) {
     echo "Plant: $pid $symbol $genus $species $common_name $family";
   }
 }
+*/
 
 if (!mysqli_query($con,$sql))
   {
@@ -100,6 +101,6 @@ else
   {
 
   }
-mysqli_close($con); */
+mysqli_close($con);
 
 ?>
