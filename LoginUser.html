@@ -84,24 +84,24 @@
 
 <p>
 <?php
-   include_once("./library.php"); // To connect to the database                                                                                                                        
+   include_once("./library.php"); // To connect to the database
 
 $con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
-// Check connection                                                                                                                                                                 
+// Check connection
 if (mysqli_connect_errno())
   {
     echo "Failed to connect to MySQL: " . mysqli_connect_error();
   }
 
 session_start();
-//Make the variables you'll need from post request.                                                                                                                                 
+//Make the variables you'll need from post request.
 $email = $_POST['email'];
 $password = $_POST['password'];
 $hashed_password = password_hash($password, PASSWORD_DEFAULT).
 
-  //REMEMBER, the HASHED PASSWORD is stored in the database                                                                                                                           
+  //REMEMBER, the HASHED PASSWORD is stored in the database
 
-  // What I want to do is get the UID associated with this e-mail address and check to see the hashed password we have saved matches the password                                   
+  // What I want to do is get the UID associated with this e-mail address and check to see the hashed password we have saved matches the password
   $query1 = mysqli_query("SELECT Email FROM User WHERE Email = '$email' ");
 $query2 = mysqli_query("SELECT Password FROM User WHERE Email = '$email' " );
 
@@ -114,9 +114,9 @@ if ($email == $query1 || $pass ) {
 }
 else {
   echo "Invalid Login";
-}                       
+}
 
-?></p>
+?> </p>
 
 
                         <div class="text-center">
@@ -230,7 +230,7 @@ else {
                 </div>
             </div>
 </form>
-<!-- ######## --> 
+<!-- ######## -->
 
 <!--### AJAX WAY #### -->
 <head>
@@ -272,7 +272,7 @@ else {
 </div>
 </section>
 
-    <!-- ARBORTEUM SECTION!!!!!!!!!!!!!!!! -->    
+    <!-- ARBORTEUM SECTION!!!!!!!!!!!!!!!! -->
 <section class="success" id="about">
         <div class="container">
             <div class="row">
@@ -282,10 +282,10 @@ else {
                 </div>
             </div>
 	    <div class="container">
-            <div class="row">      
+            <div class="row">
               <div class="col-md-12">
 		<div class="text-center">
-	      <p> Search Arboretum by State or Region</p>   
+	      <p> Search Arboretum by State or Region</p>
         </div>
 	</div>
 
@@ -302,26 +302,8 @@ else {
                 </div>
             </div>
 
-<!-- Pick region -->
- <p>Select Your Region</p>
-   <div class="row control-group">
-    <div class="form-group col-xs-12 floating-label-form-group controls">
-<select class="selectpicker">
-            <option value=""></option>
-            <option value="Northeast">Northeast</option>
-            <option value="Mideast">Mideast</option>
-            <option value="Great Lakes">Great Lakes</option>
-            <option value="Plains">Plains</option>
-            <option value="Southeast">Southeast</option>
-            <option value="Southwest">Southwest</option>
-            <option value="Rocky Mountains">Rocky Mountains</option>
-            <option value="Far West">Far West</option>
-</select>
-</div>
-</div>
-
 <!-- Submit button !-->
-            
+
             <div id="success"></div>
             <div class="row">
               <div class="form-group col-xs-12">
