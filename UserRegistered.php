@@ -148,13 +148,13 @@ mysqli_close($con);
     <input type="text" class="form-control" placeholder="State" id="state" name="state" required data-validation-required-message="Please enter your State of residence.">
     <p class="help-block text-danger"></p>
   </div>
-              </div>
+  </div>
 </div>
 
             <!-- Submit button !-->
             <br>
             <div id="success"></div>
-            <div class="row">
+            <div class="row" style="text-align:center">
               <div class="form-group col-xs-12">
                 <button type="submit" class="btn btn-success btn-lg" href="UserLives.php" >Submit</button>
               </div>
