@@ -1,28 +1,18 @@
 <?php
-
-/*
-
-   THIS IS ASHLEY'S ATTEMPT I AM COMMENTING OUT TO TRY OUT MY OWN METHODS
-
-
-session_start();
-
-require "dbconnect.php"; // To connect to the database
+require "dbconnect.php";
 $db = DbUtil::loginConnection();
-//$con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
+
 $stmt = $db->stmt_init();
 
-
-if($stmt->prepare("select * from User where Common_Name like ?") or die(mysqli_error($con))) {
+if($stmt->prepare("select * from Plant where common_name like ?") or die(mysqli_error($db))) {
   $searchString = '%' . $_GET['searchName'] . '%';
   $stmt->bind_param(s, $searchString);
   $stmt->execute();
+  $stmt->bind_result($pid, $symbol, $genus, $species, $cname, $family);
+  echo "<table border=1><th>pid</th><th>symbol</th><th>genus</th><th>species</th><th>cname/th><th>family</th>\n";
 
-  $stmt->bind_result($Plant_ID, $Symbol, $Genus, $Species, $Common_Name, $Family);
-  echo "<table border=1><th>Plant ID</th><th>Symbol</th><th>Genus</th><th>Species</th><th>Common Name</th><th>Family</th>\n";
-
-while($stmt->fetch()) {
-    echo "<tr><td>$Plant_ID</td><td>$Symbol</td><td>$Genus</td><td>$Species</td><td>$Common_Name</td><td>$Family</td></tr>";
+ while($stmt->fetch()) {
+    echo "<tr><td>$pid</td><td>$symbol</td><td>$genus</td><td>$species</td>$cname<td>$family</td></tr>";
   }
   echo "</table>";
 
@@ -30,11 +20,12 @@ while($stmt->fetch()) {
 }
 
 $db->close();
-//mysqli_close($con);
-*/
 
 
-session_start();
+?>
+
+// Neha's version
+/*session_start();
 print_r($_SESSION);
 
 include_once("./library.php"); // To connect to the database
@@ -59,7 +50,7 @@ echo "Searching for $plant_search ....";
 $query = mysql_query("SELECT PID,Common_Name FROM Plant") or die (mysql_error());
 //$result = $con->query($query) or die ("Invalid Selection." . $con->error);
 
-while($rows = mysql_fetch_array($query)):
+while($rows = mysql_fetch_array($query)){
 
        $pid = $rows['PID'];
        $symbol = $rows['Symbol'];
@@ -71,8 +62,9 @@ while($rows = mysql_fetch_array($query)):
        echo "$pid<br>$symbol<br>$genus<br>$species<br>$common<br>$family<br><br>";
 
        endwhile;
+     }
 
-/*$rows = $result->$num_rows;
+$rows = $result->$num_rows;
 
 echo $num_rows;
 
@@ -91,7 +83,7 @@ for ($i-0; $i<$rows; $i++) {
     echo "Plant: $pid $symbol $genus $species $common_name $family";
   }
 }
-*/
+
 
 if (!mysqli_query($con,$sql))
   {
@@ -102,5 +94,4 @@ else
 
   }
 mysqli_close($con);
-
-?>
+*/
