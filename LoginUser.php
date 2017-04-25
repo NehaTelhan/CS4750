@@ -89,6 +89,7 @@
                               session_start();
                               $_SESSION['Email'] = $email;
                               print_r($_SESSION);
+
                               echo "You are logged in as $email."
                               ?>
                               </p>

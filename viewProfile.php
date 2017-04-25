@@ -113,36 +113,39 @@
 
               session_start();
               print_r($_SESSION);
-
-              $email = "L@von.com";
-
-              $_SESSION['Logged_in'] = true;
-              $_SESSION['Email'] = $email;
-              $_SESSION['UID'] = 176;
-              $_SESSION['First_Name'] = "Lorenzo";
-              $_SESSION['Last_Name'] = "Von Matterhorn";
-
-
-              // What I want to do is get the UID associated with this e-mail address and check to see the hashed password we have saved matches the password
-              $query1 = "SELECT uid,firstname,lastname,email FROM User";
-              $result1 = $con->query($query1) or die ("Invalid Selection" . $con->error);
-              $rows1 = $result1->num_rows;
-              for ($i=0; $i<$rows1; $i++) {
-                if ($result1->fetch_array()['Email']==$email) {
-                  $_SESSION['Logged_in'] = true;
-                  $_Session['Email'] = $email;
-                  $_Session['UID'] = $result1->fetch_array()['UID'];
-                  $_SESSION['First_Name'] = $result1->fetch_array()['First_Name'];
-                  $_SESSION['Last_Name'] = $result1->fetch_array()['Last_Name'];
-                }
-                else {
-                  //echo "Invalid Login.";
-                }
+              if(isset($_SESSION['Email'])){
+                echo "Your sessoin is running" . $_SESSION['Email'];
               }
 
-              $first_name = $_SESSION['First_Name'];
-
-              echo "First Name: $first_name";
+              // $email = "L@von.com";
+              //
+              // $_SESSION['Logged_in'] = true;
+              // $_SESSION['Email'] = $email;
+              // $_SESSION['UID'] = 176;
+              // $_SESSION['First_Name'] = "Lorenzo";
+              // $_SESSION['Last_Name'] = "Von Matterhorn";
+              //
+              //
+              // // What I want to do is get the UID associated with this e-mail address and check to see the hashed password we have saved matches the password
+              // $query1 = "SELECT uid,firstname,lastname,email FROM User";
+              // $result1 = $con->query($query1) or die ("Invalid Selection" . $con->error);
+              // $rows1 = $result1->num_rows;
+              // for ($i=0; $i<$rows1; $i++) {
+              //   if ($result1->fetch_array()['Email']==$email) {
+              //     $_SESSION['Logged_in'] = true;
+              //     $_Session['Email'] = $email;
+              //     $_Session['UID'] = $result1->fetch_array()['UID'];
+              //     $_SESSION['First_Name'] = $result1->fetch_array()['First_Name'];
+              //     $_SESSION['Last_Name'] = $result1->fetch_array()['Last_Name'];
+              //   }
+              //   else {
+              //     //echo "Invalid Login.";
+              //   }
+              // }
+              //
+              // $first_name = $_SESSION['First_Name'];
+              //
+              // echo "First Name: $first_name";
 
 
 
