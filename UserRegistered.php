@@ -82,7 +82,8 @@
                     <div class="intro-text">
                         <h1 class="name">Registration Success!</h1>
                           <!--User Insert!-->
- <p>  <?php
+ <p>
+   <?php
    include_once("./library.php"); // To connect to the database
 
 $con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
@@ -102,7 +103,7 @@ session_start();
 $_SESSION["Email"] = $email;
 
 
-$sql="INSERT INTO User (First_Name, Last_Name, Email, Password) VALUES ('$first_name', '$last_name', '$email', '$hashed_password')";
+$sql="INSERT INTO User (firstname, lastname, email, password) VALUES ('$first_name', '$last_name', '$email', '$hashed_password')";
 
 if (!mysqli_query($con,$sql))
   {

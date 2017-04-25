@@ -173,7 +173,7 @@ else
     //End the session so user is effectively logged out.
     session_start();
     session_destroy();
-    header('Location: LoginUser.php');
+    //header('Location: LoginUser.php');
     exit;
   }
 mysqli_close($con);

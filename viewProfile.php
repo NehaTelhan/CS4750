@@ -81,58 +81,7 @@
                 <div class="col-lg-12">
                     <div class="intro-text">
                         <h1 class="name">View Profile</h1>
-<p>
-<?php
-include_once("./library.php"); // To connect to the database
-$con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
-
-// Check connection
-if (mysqli_connect_errno())
-  {
-    echo "Failed to connect to MySQL: " . mysqli_connect_error();
-  }
-
-session_start();
-print_r($_SESSION);
-
-$email = "L@von.com";
-
-$_SESSION['Logged_in'] = true; 
-$_SESSION['Email'] = $email;
-$_SESSION['UID'] = 176;
-$_SESSION['First_Name'] = "Lorenzo";
-$_SESSION['Last_Name'] = "Von Matterhorn";
-
-
-// What I want to do is get the UID associated with this e-mail address and check to see the hashed password we have saved matches the password
-$query1 = "SELECT uid,firstname,lastname,email FROM User";
-$result1 = $con->query($query1) or die ("Invalid Selection" . $con->error);
-$rows1 = $result1->num_rows;
-for ($i=0; $i<$rows1; $i++) {
-  if ($result1->fetch_array()['Email']==$email) {
-    $_SESSION['Logged_in'] = true;
-    $_Session['Email'] = $email;
-    $_Session['UID'] = $result1->fetch_array()['UID'];
-    $_SESSION['First_Name'] = $result1->fetch_array()['First_Name'];
-    $_SESSION['Last_Name'] = $result1->fetch_array()['Last_Name'];
-  }
-  else {
-    //echo "Invalid Login.";
-  }
-}
-
-$first_name = $_SESSION['First_Name'];
-
-echo "First Name: $first_name";
-
-
-
-?>
-
-
-</p>
-
-                        <div class="text-center">
+                          <div class="text-center">
                         <hr class="star-light">
                         <span class="skills">Explore - Search - Research - Discover</span>
                     </div>
@@ -141,81 +90,69 @@ echo "First Name: $first_name";
         </div>
     </header>
 
-    <!-- Portfolio Grid Section -->
+    <!-- User Info Section -->
     <section id="portfolio">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2>Explore</h2>
+                    <h2>Your information</h2>
                     <hr class="star-primary">
                 </div>
             </div>
-            <div class="row">
-                <div class="col-sm-4 portfolio-item">
-                    <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
-                        <div class="caption">
-                            <div class="caption-content">
-                                <i class="fa fa-search-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="img/portfolio/succulent.jpg" class="img-responsive" alt="Succulent">
-                    </a>
-                </div>
-                <div class="col-sm-4 portfolio-item">
-                    <a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">
-                        <div class="caption">
-                            <div class="caption-content">
-                                <i class="fa fa-search-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="img/portfolio/water_lily.jpg" class="img-responsive" alt="Water Lily">
-                    </a>
-                </div>
-                <div class="col-sm-4 portfolio-item">
-                    <a href="#portfolioModal3" class="portfolio-link" data-toggle="modal">
-                        <div class="caption">
-                            <div class="caption-content">
-                                <i class="fa fa-search-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="img/portfolio/arboretum1.jpg" class="img-responsive" alt="Arboretum">
-                    </a>
-                </div>
-                <div class="col-sm-4 portfolio-item">
-                    <a href="#portfolioModal4" class="portfolio-link" data-toggle="modal">
-                        <div class="caption">
-                            <div class="caption-content">
-                                <i class="fa fa-search-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="img/portfolio/exotic_plant.jpg" class="img-responsive" alt="Exotic Plant">
-                    </a>
-                </div>
-                <div class="col-sm-4 portfolio-item">
-                    <a href="#portfolioModal5" class="portfolio-link" data-toggle="modal">
-                        <div class="caption">
-                            <div class="caption-content">
-                                <i class="fa fa-search-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="img/portfolio/care_succulent.jpg" class="img-responsive" alt="care_succulent">
-                    </a>
-                </div>
-                                <div class="col-sm-4 portfolio-item">
-                    <a href="#portfolioModal6" class="portfolio-link" data-toggle="modal">
-                        <div class="caption">
-                            <div class="caption-content">
-                                <i class="fa fa-search-plus fa-3x"></i>
-                            </div>
-                        </div>
-                        <img src="img/portfolio/daisies.jpg" class="img-responsive" alt="Daisies">
-                    </a>
-                </div>
+            <div>
+              <p>
+              <?php
+              include_once("./library.php"); // To connect to the database
+              $con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
+
+              // Check connection
+              if (mysqli_connect_errno())
+                {
+                  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+                }
+
+              session_start();
+              print_r($_SESSION);
+
+              $email = "L@von.com";
+
+              $_SESSION['Logged_in'] = true;
+              $_SESSION['Email'] = $email;
+              $_SESSION['UID'] = 176;
+              $_SESSION['First_Name'] = "Lorenzo";
+              $_SESSION['Last_Name'] = "Von Matterhorn";
+
+
+              // What I want to do is get the UID associated with this e-mail address and check to see the hashed password we have saved matches the password
+              $query1 = "SELECT uid,firstname,lastname,email FROM User";
+              $result1 = $con->query($query1) or die ("Invalid Selection" . $con->error);
+              $rows1 = $result1->num_rows;
+              for ($i=0; $i<$rows1; $i++) {
+                if ($result1->fetch_array()['Email']==$email) {
+                  $_SESSION['Logged_in'] = true;
+                  $_Session['Email'] = $email;
+                  $_Session['UID'] = $result1->fetch_array()['UID'];
+                  $_SESSION['First_Name'] = $result1->fetch_array()['First_Name'];
+                  $_SESSION['Last_Name'] = $result1->fetch_array()['Last_Name'];
+                }
+                else {
+                  //echo "Invalid Login.";
+                }
+              }
+
+              $first_name = $_SESSION['First_Name'];
+
+              echo "First Name: $first_name";
+
+
+
+              ?> </p>
+
             </div>
         </div>
     </section>
 
-<!-- PLANT SEARCH SECTION!!!!!! -->
+<!-- Insert Allergy -->
 <section class="success" id="search">
   <div class="row">
                     <div class="col-lg-12 text-center">
@@ -356,231 +293,6 @@ else
         <a class="btn btn-primary" href="#page-top">
             <i class="fa fa-chevron-up"></i>
         </a>
-    </div>
-
-    <!-- Portfolio Modals -->
-    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-content">
-            <div class="close-modal" data-dismiss="modal">
-                <div class="lr">
-                    <div class="rl">
-                    </div>
-                </div>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2">
-                        <div class="modal-body">
-                            <h2>Succulents</h2>
-                            <hr class="star-primary">
-                            <img src="img/portfolio/cabin.png" class="img-responsive img-centered" alt="">
-						       <p>Succulent comes from the Latin word <i>"Sucus"</i>, which means juice or sap. Succulents are sometimes referred to as 'Water Storage Plants' as they have some parts that are more normally thickened and fleshy, usually to retain water in arid climates or soil conditions Many plant families have multiple succulents found within them (over 25 plant families). In some families, such as Aizoaceae, Cactaceae, and Crassulaceae, most species are succulents. </p>
-                            <ul class="list-inline item-details">
-						       <li>Wikipedia:
-                                    <strong><a href="https://en.wikipedia.org/wiki/Succulent_plant">Succulent Plant</a>
-                                    </strong>
-                                </li>
-						       <li>Date:
-                                    <strong><a href="http://startbootstrap.com">April 2014</a>
-                                    </strong>
-                                </li>
-						       <li>Facts about Succulents:
-                                    <strong><a href="http://www.housebeautiful.com/lifestyle/gardening/g3441/interesting-facts-about-succulents/">Learn More</a>
-                                    </strong>
-                                </li>
-                            </ul>
-                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-content">
-            <div class="close-modal" data-dismiss="modal">
-                <div class="lr">
-                    <div class="rl">
-                    </div>
-                </div>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2">
-                        <div class="modal-body">
-                            <h2>Aquatic Plants</h2>
-                            <hr class="star-primary">
-                            <img src="img/portfolio/cake.png" class="img-responsive img-centered" alt="">
-						       <p> Aquatic plants are plants that have adapted to living in aquqatic environments (saltwater or freshwater). They are also refered to as <i>hydrophytes</i> or <i>macrophytes</i>. One of the largest aquatic plants in the world is the <a href="https://en.wikipedia.org/wiki/Victoria_amazonica">Amazon Water Lily</a>, one of the smallest is the minute <a href="https://en.wikipedia.org/wiki/Duckweed">duckweed</a>. </p>
-                            <ul class="list-inline item-details">
-						       <li>Wikipedia:
-                                    <strong><a href="https://en.wikipedia.org/wiki/Aquatic_plant"> Aquatic Plants</a>
-                                    </strong>
-                                </li>
-						       <li>Date:
-                                    <strong><a href="http://startbootstrap.com">April 2014</a>
-                                    </strong>
-                                </li>
-						       <li>Common Waterplants:
-                                    <strong><a href="http://www.bhg.com/gardening/plant-dictionary/water/">Descriptions and Info</a>
-                                    </strong>
-                                </li>
-                            </ul>
-                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-content">
-            <div class="close-modal" data-dismiss="modal">
-                <div class="lr">
-                    <div class="rl">
-                    </div>
-                </div>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2">
-                        <div class="modal-body">
-                            <h2>Arboretums</h2>
-                            <hr class="star-primary">
-                            <img src="img/portfolio/circus.png" class="img-responsive img-centered" alt="">
-						       <p>The United States as numerous botanical gardens devoted to treeds, weeds, flowers and all plants alike. They are places where many varieties of trees are grown for research, educational and ornamental purposes; where trees and shrubs are cultivated for exhibition.</p>
-                            <ul class="list-inline item-details">
-						       <li>National Arboretum:
-                                    <strong><a href="http://www.usna.usda.gov/">Explore</a>
-                                    </strong>
-                                </li>
-						       <li>Date:
-                                    <strong><a href="http://startbootstrap.com">April 2014</a>
-                                    </strong>
-                                </li>
-						       <li>Calendar & Events:
-                                    <strong><a href="http://www.usna.usda.gov/Education/events.html">US National Arbor.</a>
-                                    </strong>
-                                </li>
-                            </ul>
-                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-content">
-            <div class="close-modal" data-dismiss="modal">
-                <div class="lr">
-                    <div class="rl">
-                    </div>
-                </div>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2">
-                        <div class="modal-body">
-                            <h2>Exotic Plants</h2>
-                            <hr class="star-primary">
-                            <img src="img/portfolio/game.png" class="img-responsive img-centered" alt="">
-                            <p> Interested in learning more about exotic plants and how to obtain them. Read more</p>
-						       <p>Exotic plants, or <strong>introduced plants</strong> are plant species that are introduced to a region in which they are not native. Many cultivate plants are used as ornamentals and are often considered <a href="http://horticultureandsoilscience.wikia.com/wiki/Invasive_Plants">invasive species</p>
-                            <ul class="list-inline item-details">
-						       <li>Wikia:
-                                    <strong><a href="http://horticultureandsoilscience.wikia.come/wiki/Invasive_Plants">Invasive Plants</a>
-                                    </strong>
-                                </li>
-						       <li>Date:
-                                    <strong><a href="http://startbootstrap.com">April 2014</a>
-                                    </strong>
-                                </li>
-						       <li>Learn more:
-                                    <strong><a href="http://exoticplantsltd.com">Exotic Plants</a>
-                                    </strong>
-                                </li>
-                            </ul>
-                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="portfolio-modal modal fade" id="portfolioModal5" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-content">
-            <div class="close-modal" data-dismiss="modal">
-                <div class="lr">
-                    <div class="rl">
-                    </div>
-                </div>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2">
-                        <div class="modal-body">
-                            <h2>Taking Care of Your Plant</h2>
-                            <hr class="star-primary">
-                            <img src="img/portfolio/safe.png" class="img-responsive img-centered" alt="">
-						       <p>Most succulents need half a day to a full day of sunlight. The soil level should be on the same depth on the plant. It is important to water your succulent thoroughly.  Fertilizer should be used sparsely, about once a month is all they need.</p>
-                            <ul class="list-inline item-details">
-						       <li>Simply Succulents:
-                                    <strong><a href="https://simplysucculents.com/plant-care-information/">Plant Care Information</a>
-                                    </strong>
-                                </li>
-						       <li>Date:
-                                    <strong><a href="http://startbootstrap.com">April 2014</a>
-                                    </strong>
-                                </li>
-						       <li>General Plant Care:
-                                    <strong><a href="http://www.ambius.com/learn/online/top-tips/index.html">Learn more</a>
-                                    </strong>
-                                </li>
-                            </ul>
-                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-content">
-            <div class="close-modal" data-dismiss="modal">
-                <div class="lr">
-                    <div class="rl">
-                    </div>
-                </div>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2">
-                        <div class="modal-body">
-                            <h2>Flowers and their Endless Beauty</h2>
-                            <hr class="star-primary">
-                            <img src="img/portfolio/submarine.png" class="img-responsive img-centered" alt="">
-						       <p>Flowers are the reproductive part of the plant. They are known to have an aromatic scent when they output maximal levels of pollen. Each type of flower is extremely unique; they have different types of petals, scents and nutritional requirements. Some plants (like <a href="http://sunbulb.com/info/wp-content/uploads/2010/08/orchids.jpg">orchids</a>) don't even need soil to grow!</p>
-                           <ul class="list-inline item-details">
-                                <li>Source:
-                                    <strong><a href="http://www.avasflowers.net/facts-about-flowers-for-kids">Facts about Flowers</a>
-                                    </strong>
-                                </li>
-						       <li>Date:
-                                    <strong><a href="http://startbootstrap.com">April 2014</a>
-                                    </strong>
-                                </li>
-						       <li>Learn more:
-                                    <strong><a href="https://en.wikipedia.org/wiki/Flower">Wikipedia</a>
-                                    </strong>
-                                </li>
-                            </ul>
-                            <button id="btnSubmit" type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
     <!-- jQuery -->
