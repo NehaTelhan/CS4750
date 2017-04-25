@@ -209,28 +209,18 @@ else {
                     <h2>  Plant Search</h2>
                     <hr class="star-light">
                 </div>
+                
          <div class="container">
   <div class="row">
         <div class="col-md-12">
  <div class="text-center" >
 <p>Search plant by common name</p>
   </div>
+</div>
+</div>
 
 
-<!-- #######OLD PLANT SEARCH ######## -->
-   <form action="PlantSelect.php#search" method="POST">
-            <div id="custom-search-input">
-                <div class="input-group col-md-12">
-                    <input type="text" id="commonname" name="commonname" class="form-control input-lg" required data-validation-required-message="" placeholder="Type To Search" />
-                    <span class="input-group-btn">
-                        <button class="btn btn-info btn-lg" type="submit" href="PlantSelect.php#search"</button>
-                          <i class="glyphicon glyphicon-search"> </i>
-                        </button>
-                    </span>
-                </div>
-            </div>
-</form>
-<!-- ######## -->
+
 
 <!--### AJAX WAY #### -->
 <head>
@@ -255,9 +245,9 @@ else {
       </script>
 </head>
 <body>
-  <h3>Search substring of sname in Sailors Table</h3>
+  <h3>Search substring of common name in Plant Table</h3>
 
-  <input class="xlarge" id="searchNameinput" type="search" size="100" placeholder="Sailor's Name Contains"/>
+  <input class="xlarge" id="searchNameinput" type="search" size="30" placeholder="Plant Name Contains"/>
 
   <div id="searchNameresult">Search Result</div>
 
