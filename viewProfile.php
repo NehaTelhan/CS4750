@@ -119,8 +119,9 @@ if (mysqli_connect_errno()) {
 echo("Can't connect to MySQL Server. Error code: " . mysqli_connect_error());
 }
 
+$inputEmail=$_SESSION['Email'];
 // Form the SQL query (a SELECT query)
-$sql="SELECT * FROM User WHERE $_SESSION['Email']=email ";
+$sql="SELECT uid, firstname, lastname, email, password, hasallergy FROM User WHERE email LIKE $inputEmail";
 $result = mysqli_query($con,$sql);
 
 // Print the data from the table row by row
