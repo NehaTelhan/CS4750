@@ -1,6 +1,6 @@
 <?php
 
-/* 
+/*
 
    THIS IS ASHLEY'S ATTEMPT I AM COMMENTING OUT TO TRY OUT MY OWN METHODS
 
@@ -20,7 +20,7 @@ if($stmt->prepare("select * from User where Common_Name like ?") or die(mysqli_e
 
   $stmt->bind_result($Plant_ID, $Symbol, $Genus, $Species, $Common_Name, $Family);
   echo "<table border=1><th>Plant ID</th><th>Symbol</th><th>Genus</th><th>Species</th><th>Common Name</th><th>Family</th>\n";
-  
+
 while($stmt->fetch()) {
     echo "<tr><td>$Plant_ID</td><td>$Symbol</td><td>$Genus</td><td>$Species</td><td>$Common_Name</td><td>$Family</td></tr>";
   }
@@ -56,17 +56,30 @@ $plant_search = $_POST['commonname'];
 echo "Searching for $plant_search ....";
 
 //$query = "SELECT PID, Symbol, Genus, Species, Common_Name, Family FROM Plant";
-$query = "SELECT PID FROM Plant";
+$query = "SELECT PID,Common_Name FROM Plant";
 $result = $con->query($query) or die ("Invalid Selection." . $con->error);
 
-$rows = $result->$num_rows;
+while($rows = mysql_fetch_array($query)):
+
+       $pid = $rows['PID'];
+       $symbol = $rows['Symbol'];
+       $genus = $rows['Genus'];
+       $species = $rows['Species'];
+       $common = $rows['Common_Name']
+       $family = $rows['Family']
+
+       echo "$pid<br>$symbol<br>$genus<br>$species<br>$common<br>$family<br><br>";
+
+       endwhile;
+
+/*$rows = $result->$num_rows;
 
 echo $num_rows;
 
 for ($i-0; $i<$rows; $i++) {
-  if ($result->fetch_array()['Common_Name']==$plant_search || 
-      $result->fetch_array()['Genus']==$plant_search || 
-      $result->fetch_array()['Species']==$plant_search || 
+  if ($result->fetch_array()['Common_Name']==$plant_search ||
+      $result->fetch_array()['Genus']==$plant_search ||
+      $result->fetch_array()['Species']==$plant_search ||
       $result->fetch_array()['Family']==$plant_search) {
     $pid = $result->fetch_array()['PID'];
     $symbol = $result->fetch_array()['Symbol'];
@@ -75,7 +88,7 @@ for ($i-0; $i<$rows; $i++) {
     $common_name = $result->fetch_array()['Common_Name'];
     $family = $result->fetch_array()['Family'];
 
-    echo "Plant:   $pid $symbol $genus $species $common_name $family";
+    echo "Plant: $pid $symbol $genus $species $common_name $family";
   }
 }
 
@@ -85,10 +98,8 @@ if (!mysqli_query($con,$sql))
   }
 else
   {
-    echo "Residential Information Added!";
-    echo "You live in the state $state and the region $region";
+
   }
-mysqli_close($con);
+mysqli_close($con); */
 
 ?>
-

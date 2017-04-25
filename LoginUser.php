@@ -260,7 +260,7 @@ else {
 <body>
   <h3>Search substring of sname in Sailors Table</h3>
 
-  <input class="xlarge" id="searchNameinput" type="search" size="100" placeholder="Sailor's Name Contains"/>
+  <input class="xlarge" id="searchNameinput" type="search" size="100" placeholder="Plant Name Contains"/>
 
   <div id="searchNameresult">Search Result</div>
 
