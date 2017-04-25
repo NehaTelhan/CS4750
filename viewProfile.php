@@ -46,6 +46,7 @@
             </div>
 
    <!-- Collect the nav links, forms, and other content for toggling -->
+   <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="hidden">
@@ -54,11 +55,14 @@
                     <li class="page-scroll">
                         <a href="#portfolio">Explore</a>
                     </li>
-                    <li class="page-scroll">
-                        <a href="#page-top">View Profile</a>
+                    <li class="">
+                        <a href="PlantSearch.html"> Plant Search </a>
+                    </li>
+                    <li class="">
+                        <a href="ArborSearch.html"> Arboretum Search </a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#search"> Allergies </a>
+                        <a href="viewProfile.php">View Profile</a>
                     </li>
                     <li class="page-scroll">
                         <a href="Logout.php">Logout</a>
@@ -78,58 +82,35 @@
                     <div class="intro-text">
                         <h1 class="name">View Profile</h1>
 <p>
+
 <?php
-   include_once("./library.php"); // To connect to the database
+require "dbconnect.php";
+$db = DbUtil::loginConnection();
 
-$con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
-// Check connection
-if (mysqli_connect_errno())
-  {
-    echo "Failed to connect to MySQL: " . mysqli_connect_error();
+$stmt = $db->stmt_init();
+session_start()
+print_r($_SESSION);
+$email1 = $_SESSION['Email'];
+
+if($stmt->prepare("select uid, firstname, lastname, email, hasallergy from User where $email1 = email") or die(mysqli_error($db))) {
+  $searchString = $email1; //$_GET['emailFromLogin']
+  $stmt->bind_param(s, $searchString);
+  $stmt->execute();
+  $stmt->bind_result($uid, $firstname, $lastname, $email, $hasallergy);
+
+ while($stmt->fetch()) {
+    echo "Name: $firstname $lastname\n";
+    echo "Email: $email\n";
+    echo "Has Allergy?: $hasallergy\n";
   }
 
-session_start();
-//Make the variables you'll need from post request.
-$email = $_POST['email'];
-$password = $_POST['password'];
-$hashed_password = password_hash($password, PASSWORD_DEFAULT);
-//REMEMBER, the HASHED PASSWORD is stored in the database
 
-  // What I want to do is get the UID associated with this e-mail address and check to see the hashed password we have saved matches the password
-$query1 = "SELECT UID,First_Name,Last_Name,Email,Password FROM User";
-
-$result1 = $con->query($query1) or die ("Invalid Selection" . $con->error);
-
-$rows1 = $result1->num_rows;
-
-for ($i=0; $i<$rows1; $i++) {
-  if ($result1->fetch_array()['Email']==$email) {
-    $_SESSION['Logged_in'] = true;
-    $_Session['Email'] = $email;
-    $_Session['UID'] = $result1->fetch_array()['UID'];
-    $_SESSION['First_Name'] = $result1->fetch_array()['First_Name'];
-    $_SESSION['Last_Name'] = $result1->fetch_array()['Last_Name'];
-  }
-  else {
-    echo "Invalid Login.";
-  }
+  $stmt->close();
 }
 
-$pass = password_verify($password,$hashed_password);
-
-/*if ($email == $query1 || $pass ) {
-  $_SESSION["logged_in"] = true;
-  $_SESSION["Email"] = $email;
-  echo "Name: $first_name $last_name";
-  echo "Email: $email";
-  // echo select State from Lives WHERE UID = UID
-  // echo select Region from Lives Where UID = UID
-}
-else {
-  echo "Invalid Login";
-  }*/
-
-?></p>
+$db->close();
+?>
+</p>
 
                         <div class="text-center">
                         <hr class="star-light">
@@ -265,13 +246,13 @@ for ($i=0; $i<$rows; $i++) {
     $pid = $result->fetch_array()['PID'];
     $sql="INSERT INTO Allergic_to (UID, PID) VALUES ('$uid', '$pid')";
   }
-  else 
+  else
     {
       echo "Failed to Insert";
     }
 }
 $_SESSION['Email'] = $email;
-                                  
+
 echo $_SESSION["Email"];
 echo "UID: $uid";
 
@@ -283,7 +264,7 @@ if (!mysqli_query($con,$sql))
   }
 else
   {
-    //echo 
+    //echo
   }
  mysqli_close($con);
 ?>
