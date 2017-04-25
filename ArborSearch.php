@@ -47,6 +47,4 @@ table#t01 th {
 }
 
 $db->close();
-
-
 ?>
