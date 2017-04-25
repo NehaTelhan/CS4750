@@ -55,10 +55,16 @@
                         <a href="#portfolio">Explore</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#page-top">View Profile</a>
+                        <a href="PlantSearch.html"> Plant Search </a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#search"> Allergies </a>
+                        <a href="ArborSearch.html"> Arboretum Search </a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="viewProfile.php">View Profile</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="InsertAllergy.php"> Allergies </a>
                     </li>
                     <li class="page-scroll">
                         <a href="Logout.php">Logout</a>
@@ -76,7 +82,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="intro-text">
-                        <h1 class="name">Thank you for registering!</h1>
+                        <h1 class="name">Information added!</h1>
 <p>
   <?php
   session_start();
@@ -113,14 +119,11 @@
     }
   else
     {
-      echo "Residential Information Added!\n";
-      echo "Your state: $state";
+      echo "You live in $state."
     }
   mysqli_close($con);
   ?>
 </p>
-
-      <h2> Start your plant explorations below </h2>
                         <div class="text-center">
                         <hr class="star-light">
                         <span class="skills">Explore - Search - Research - Discover</span>
