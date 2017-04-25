@@ -26,14 +26,21 @@ td, th {
 tr:nth-child(even) {
     background-color: #aee5c9;
 }
+
+table#t01 th {
+    background-color: #aee5c9;
+    color: black;
+}
+
 </style>
-<table border=1>
+<table id=t01 style=width:100%  border=1>
 <th><strong>Symbol</strong></th>
 <th><strong>Genus</strong></th>
 <th><strong>Species</strong></th>
 <th><strong>Common Name</strong></th>
 <th><strong>Family</strong></th>
-\n";
+\n"
+;
 
  while($stmt->fetch()) {
     echo "<tr><td>$symbol</td><td>$genus</td><td>$species</td><td>$cname</td><td>$family</td></tr>";
