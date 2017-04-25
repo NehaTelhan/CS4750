@@ -120,7 +120,7 @@
   ?>
 </p>
 
-      <p> Start your plant explorations below </p>
+      <h2> Start your plant explorations below </h2>
                         <div class="text-center">
                         <hr class="star-light">
                         <span class="skills">Explore - Search - Research - Discover</span>
