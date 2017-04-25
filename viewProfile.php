@@ -114,7 +114,7 @@
                 }
 
               session_start();
-              print_r($_SESSION);
+              //print_r($_SESSION);
 
               if(isset($_SESSION['Email'])){
                 echo "Your session is running as " . $_SESSION['Email'];
@@ -126,24 +126,29 @@
 
               $rows1 = $result1->num_rows;
               echo "ROWS: $rows1";
+
               for ($i=0; $i<$rows1; $i++) {
-                if ($result1->fetch_array()['Email']==$email) {
-                  $_SESSION['Logged_in'] = true;
-                  $_Session['Email'] = $email;
-                  $_Session['UID'] = $result1->fetch_array()['UID'];
-                  $_SESSION['First_Name'] = $result1->fetch_array()['First_Name'];
-                  $_SESSION['Last_Name'] = $result1->fetch_array()['Last_Name'];
+                if ($result1->fetch_array()['email']==$_SESSION['Email']) {
+                  //$_Session['uid'] = $result1->fetch_array()['UID'];
+                  $_SESSION['First_Name'] = $result1->fetch_array()['firstname'];
+                  $_SESSION['Last_Name'] = $result1->fetch_array()['lastname'];
+                  $_SESSION['Email_1'] = $result1->fetch_array()['email'];
+                  $_SESSION['Has_allergy'] = $result1->fetch_array()['hasallergy'];
                 }
                 else {
                   //echo "Invalid Login.";
                 }
               }
 
-              $first_name = $_SESSION['First_Name'];
+              $print_first = $_SESSION['First_Name'];
+              $print_last = $_SESSION['Last_Name'];
+              $print_email = $_SESSION['Email_1'];
+              $print_allergy = $_SESSION['Has_allergy'];
 
-              echo "First Name: $first_name";
-
-
+              echo "First Name: $print_first\n";
+              echo "Last Name: $print_last\n";
+              echo "Email: $print_email\n";
+              echo "Allergy?: $print_allergy\n";
 
               ?> </p>
 
