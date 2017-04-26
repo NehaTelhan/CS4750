@@ -32,18 +32,24 @@ foreach($parsed as $value) {
     if ($row['cname'] == $value) {
       $insert_pid = $row['pid'];
       array_push($cart, $insert_pid);
+
+      echo "Plant ID: $insert_pid. Common_Name: $value.";
+      echo "<br>";
  
     }
   }
 }
 
 foreach($cart as $item) {
-  echo "<br>";
-  echo "$item";
-  echo "<br>";
+  //  echo "<br>";
+  //echo "$item";
+  //echo "<br>";
   $query = "INSERT INTO Allergic_To (uid, pid) VALUES ('$uid', '$item')";
 }
-  //Printing to User
+//Printing to User
+
+
+
 
 if (!mysqli_query($con,$query))
   {
