@@ -61,7 +61,7 @@
                         <a href="ArborSearch.html"> Arboretum Search </a>
                     </li>
                     <li class="page-scroll">
-                        <a href="viewProfile.php">View Profile</a>
+                        <a href="viewProfile.php">Profile</a>
                     </li>
                     <li class="page-scroll">
                         <a href="Logout.php">Logout</a>

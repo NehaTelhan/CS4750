@@ -109,11 +109,6 @@ require_once('./library.php');
 $con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
 
 session_start();
-//print_r($_SESSION);
-
-if(isset($_SESSION['Email'])){
-  //echo "Your session is running as " . $_SESSION['Email'];
-}
 // Check connection
 if (mysqli_connect_errno()) {
 echo("Can't connect to MySQL Server. Error code: " . mysqli_connect_error());
@@ -121,7 +116,6 @@ echo("Can't connect to MySQL Server. Error code: " . mysqli_connect_error());
 
 $inputEmail = $_SESSION['Email'];
 $uid = $_SESSION['UID'];
-//echo "UID: $uid";
 
 $query = "SELECT uid, firstname, lastname, email, password, hasallergy FROM User";
 $result = mysqli_query($con,$query);
@@ -129,13 +123,13 @@ $result = mysqli_query($con,$query);
 
 while($row = mysqli_fetch_array($result)) {
   if ($row['email'] == $inputEmail) {
-    echo "<br>";
-    echo " "."<div class='text-center'><strong>First Name</strong>: $row[firstname]";
+    //echo "<br>";
+    echo " "."<big><div class='text-center'><strong>First Name</strong>: $row[firstname]";
     echo "<br>";
     echo " "."<strong>Last Name</strong>: $row[lastname]";
     echo "<br>";
     echo " "."<strong>Email</strong>: $row[email]</div>";
-    echo "<br>";
+    echo "</big><br>";
   }
 }
 
@@ -146,13 +140,13 @@ mysqli_close($con);
             </p>
             <!-- Display comprehensive allergy list -->
             </div>
-            <div class="container">
+            
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <h2>Your Allergies</h2>
                     <hr class="star-primary">
                 </div>
-            </div>
+            
 
             <!--INSERT PHP HERE TO DISPLAY ALL THE ALLERGIES !-->
 
@@ -204,17 +198,19 @@ mysqli_close($con);
     </section>
 
 <!--Delete Allergy -->
-<div class="container">
     <div class="row">
         <div class="col-lg-12 text-center">
             <h2>Delete Allergies</h2>
             <hr class="star-primary">
         </div>
-    </div>
+  </div>
+<div class="container">
 <form action="viewProfile.php" method="post">
 <div class="form-group">
-<p for="allergy">Separate each allergy to delete with a comma</p>
-<textarea class="form-control" id="delete" name="delete" rows="3" placeholder="Enter Plant ID"></textarea>
+<div class="text-left">
+<p for="allergy">Please enter one at a time.</p>
+<input type="text" class="form-control" id="delete" name="delete" rows="3" placeholder="Enter Plant ID"></input>
+</div>
 </div>
 
 <!-- INSERT THE PHP HERE!!!!! -->
@@ -296,13 +292,15 @@ mysqli_close($con);
           <div class="text-center" >
             <form action="InsertAllergy.php" method="post">
   <div class="form-group">
-    <p for="allergy">Separate each allergy with a comma</p>
-    <textarea class="form-control" id="allergy" name="allergy" rows="3"></textarea>
+  <div align="center">
+    <p for="allergy">Please enter one at a time</p>
+    <input placeholder="Enter Exact Plant Common Name" class="form-control" style="width: 500px" id="allergy" name="allergy"></input>
   </div>
+</div>
                       <!-- ENTER ALLERGY BUTTON -->
                       <div class="row">
                           <div class="form-group col-xs-12">
-                              <button type="submit" placeholder="Enter exact common name of Plant" class="btn btn-info btn-block" href="InsertAllergy.php">Add</button>
+                              <button type="submit" placeholder="Enter exact common name of Plant" class="btn btn-info" href="InsertAllergy.php">Add</button>
                       </div>
                       </div>
                   </form>
