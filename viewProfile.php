@@ -214,10 +214,11 @@ mysqli_close($con);
 <form action="viewProfile.php" method="post">
 <div class="form-group">
 <p for="allergy">Separate each allergy to delete with a comma</p>
-<textarea class="form-control" id="delete" name="delete" rows="3" placeholder="Enter Plant ID or Plant Name"></textarea>
+<textarea class="form-control" id="delete" name="delete" rows="3" placeholder="Enter Plant ID"></textarea>
 </div>
 
 <!-- INSERT THE PHP HERE!!!!! -->
+
 <?php
 include_once("./library.php"); // To connect to the database
 $con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
@@ -231,6 +232,9 @@ session_start();
 $email = $_SESSION['Email'];
 $query1 = "SELECT uid,email FROM User";
 $result = mysqli_query($con, $query1);
+
+
+
 while($row = mysqli_fetch_array($result)) {
   if($row['email'] == $email) {
     $uid = $row['uid'];
@@ -238,22 +242,32 @@ while($row = mysqli_fetch_array($result)) {
 }
 $uid = $_SESSION['UID'];
 
-$delete_me = $_POST['delete'];
+$delete_list = $_POST['delete'];
+$parsed = explode(', ', $delete_list);
+$count = 0;
+foreach($parsed as $item){
+  $sql="SELECT uid,pid FROM Allergic_To";
+  $result2=mysqli_query($con,$sql);
+  while($row2 = mysqli_fetch_array($result2)){
+    //if($row2['pid']==$item && $row2['uid']==$uid){
+    $query="DELETE FROM Allergic_To WHERE uid=$uid AND pid='$item' "; 
+      //} uid=$row2['uid']
+  }
+    if($con->query($query) == True) {
+      //      echo "Record deleted successfully";
+      $count++;
+    }
+    else {
+      echo "Error deleting record: " . $con->error;
+    }
 
-$sql="DELETE FROM Allergic_To WHERE PID=$delete_me";
-
-if($con->query($sql) == True) {
-  echo "Record deleted successfully";
-} else {
-  echo "Error deleting record: " . $con->error;
 }
 
+echo "$count Records Deleted Successfully.";
 mysqli_close($con);
 ?>
 
 </div> <!-- closes container -->
-
-
           <!-- ENTER DELETE ALLERGY BUTTON -->
           <div class="row">
               <div class="form-group col-xs-12">
@@ -268,7 +282,7 @@ mysqli_close($con);
 <section class="success" id="search">
   <div class="row">
                     <div class="col-lg-12 text-center">
-                    <h2>Plant Allergies</h2>
+                    <h2>Add Plant Allergies</h2>
                     <hr class="star-light">
                 </div>
          <div class="container">
@@ -283,7 +297,7 @@ mysqli_close($con);
                       <!-- ENTER ALLERGY BUTTON -->
                       <div class="row">
                           <div class="form-group col-xs-12">
-                              <button type="submit" class="btn btn-info btn-block" href="InsertAllergy.php">Add</button>
+                              <button type="submit" placeholder="Enter exact common name of Plant" class="btn btn-info btn-block" href="InsertAllergy.php">Add</button>
                       </div>
                       </div>
                   </form>
