@@ -4,6 +4,7 @@ $db = DbUtil::loginConnection();
 
 $stmt = $db->stmt_init();
 $fp = fopen('arbor_result.json', 'w');
+if (!$fp){ echo 'you done fucked up';}
 if($stmt->prepare("select arborname, numspecies from Arboretum where arborname like ?") or die(mysqli_error($db))) {
   $searchString = '%' . $_GET['searchName'] . '%';
   $stmt->bind_param(s, $searchString);
