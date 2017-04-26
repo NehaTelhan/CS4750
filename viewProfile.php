@@ -59,7 +59,10 @@
                         <a href="ArborSearch.html"> Arboretum Search </a>
                     </li>
                     <li class="page-scroll">
-                        <a href="viewProfile.php">View Profile</a>
+                        <a href="#portfolio">Profile</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#search">Your Allergies</a>
                     </li>
                     <li class="page-scroll">
                         <a href="Logout.php">Logout</a>
