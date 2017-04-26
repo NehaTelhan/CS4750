@@ -181,7 +181,7 @@ mysqli_close($con);
             <form action="InsertAllergy.php" method="post">
   <div class="form-group">
     <p for="allergy">Separate each allergy with a comma</p>
-    <textarea class="form-control" id="allergy" rows="3"></textarea>
+    <textarea class="form-control" id="allergy" name="allergy" rows="3"></textarea>
   </div>
                       <!-- ENTER ALLERGY BUTTON -->
                       <div class="row">
