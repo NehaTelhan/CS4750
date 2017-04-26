@@ -80,7 +80,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="intro-text">
-                        <h1 class="name">Allergy Added!</h1>
+                        <h4 class="name">Allergy Results</h4>
                           <div class="text-center">
                         <hr class="star-light">
                     </div>
@@ -174,7 +174,7 @@ foreach($cart as $item) {
 
 if (!mysqli_query($con,$query))
   {
-    die('No such plant exists! Try again.' . mysqli_error($con));
+    die('<center><h3>No such plant exists! Try again.</h3></center>' . mysqli_error($con));
   }
 else{
 }
