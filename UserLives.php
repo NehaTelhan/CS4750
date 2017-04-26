@@ -99,14 +99,14 @@
   // Form the SQL query (an INSERT query)
   $email = $_SESSION['Email'];
 
-  $query = "SELECT UID,Email FROM User";
+  $query = "SELECT uid,email FROM User";
   $result = $con->query($query) or die ("Invalid Selection" . $con->error);
 
   $rows = $result->num_rows;
 
   for ($i=0; $i<$rows; $i++) {
-    if ($result->fetch_array()['Email'] == $email){
-      $uid = $result->fetch_array()['UID'];
+    if ($result->fetch_array()['email'] == $email){
+      $uid = $result->fetch_array()['uid'];
     }
   }
 
@@ -208,92 +208,6 @@
     </section>
 
 
-<!-- NEHA'S ATTEMPT AT ALLERGY -->
-<!-- <section class="success" id="search"> -->
-  <div class="row">
-                    <div class="col-lg-12 text-center">
-                    <h2>Plant Allergies</h2>
-                    <hr class="star-light">
-                </div>
-         <div class="container">
-  <div class="row">
-        <div class="col-md-12">
-          <div class="text-center" >
-            <p>Add Allergies</p>
-  <!-- //               <form action="viewProfile.php#search" method="post"> -->
-                <form action="InsertAllergy.php" method="post">
-                          <div class="row control-group">
-                                <div class="form-group col-xs-12 floating-label-form-group controls">
-
-                           <input type="text" class="form-control" placeholder="Plant Common Name" id="plantname" name="plantname" required data-validation-required-message="">
-                                   <p class="help-block text-danger"></p>
-                                </div>
-                           </div>
-
-                              <div id="success"></div>
-                             <div class="row">
-                                 <div class="form-group col-xs-12">
-                                     <button type="submit" class="btn btn-success btn-lg">Enter Allergy</button>
-
-
-                                     <?php include_once("./library.php"); // To connect to the database
-                                  $con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
-                                  // Check connection
-                                  if (mysqli_connect_errno())
-                                    {
-                                      echo "Failed to connect to MySQL: " . mysqli_connect_error();
-                                    }
-                                  // Form the SQL query (an INSERT query)
-                                  $allergy_name = $_POST['plantname'];
-// session_start();
-// printr($_SESSION);
-// $uid = $_SESSION['UID'];
-//
-// $query = "SELECT PID,Common_Name FROM Plant";
-// $result = $con->query($query) or die ("Invalid Selection" . $con->error);
-//
-// $rows = $result->num_rows;
-//
-// for ($i=0; $i<$rows; $i++) {
-//   if ($result->fetch_array()['Common_Name']==$allergy_name) {
-//     $pid = $result->fetch_array()['PID'];
-//     $sql="INSERT INTO Allergic_to (UID, PID) VALUES ('$uid', '$pid')";
-//   }
-//   else
-//     {
-//       echo "Failed to Insert";
-//     }
-// }
-// $_SESSION['Email'] = $email;
-//
-// echo $_SESSION["Email"];
-// echo "UID: $uid";
-//
-// //                  $sql="INSERT INTO Allergic_To (UID) VALUES ()";
-//
-// if (!mysqli_query($con,$sql))
-//   {
-//     die('Error: ' . mysqli_error($con));
-//   }
-// else
-//   {
-//     //echo
-//   }
-//  mysqli_close($con);
-//
-//
-//                                  </div>
-//                              </div>
-//                          </form>
-//   </div>
-// </div>
-// </div>
-//
-//
-//
-//
-// </section>
-// ################## INSERT ALLERGY
 
     <!-- Footer -->
     <footer class="text-center">

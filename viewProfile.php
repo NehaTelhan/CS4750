@@ -109,7 +109,7 @@ require_once('./library.php');
 $con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
 
 session_start();
-//print_r($_SESSION);
+print_r($_SESSION);
 
 if(isset($_SESSION['Email'])){
   echo "Your session is running as " . $_SESSION['Email'];
@@ -120,22 +120,51 @@ echo("Can't connect to MySQL Server. Error code: " . mysqli_connect_error());
 }
 
 $inputEmail=$_SESSION['Email'];
+
 // Form the SQL query (a SELECT query)
-$sql="SELECT uid, firstname, lastname, email, password, hasallergy FROM User WHERE email LIKE $inputEmail";
-$result = mysqli_query($con,$sql);
+//$sql="SELECT uid, firstname, lastname, email, password, hasallergy FROM User WHERE email LIKE $inputEmail";
+//$result= mysqli_query($con,$sql);
+
+$query = "SELECT uid, firstname, lastname, email, password, hasallergy FROM User";
+//$result = $con->query($query) or die ("Invalid Selection" . $con->error);
+//$rows = $result->num_rows;
+$result = mysqli_query($con,$query);
+
+//echo "INPUT EMAIL: $inputEmail";
+
+while($row = mysqli_fetch_array($result)) {
+  if ($row['email'] == $inputEmail) {
+    echo "<br>";
+    echo " "."<strong>First Name</strong>: $row[firstname]";
+    echo "<br>";
+    echo " "."<strong>Last Name</strong>: $row[lastname]";
+    echo "<br>";
+    echo " "."<strong>Email</strong>: $row[email]";
+    echo "<br>";
+    echo " "."<strong>Has Allergy?</strong>"." $row[hasallergy]";
+    echo "<br>";
+    echo " "."<i>(0 is no, 1 is yes) </i>";
+
+  }
+}
+
 
 // Print the data from the table row by row
-while($row = mysqli_fetch_array($result)) {
-echo $row['uid'];
-echo " " . $row['firstname'];
-echo " " . $row['lastname'];
-echo " " . $row['email'];
-echo " " . $row['password'];
-echo " " . $row['hasallergy'];
-echo "<br>";
-}
+//while($row = mysqli_fetch_array($result)) {
+//  echo $row['uid'];
+//  echo " " . $row['firstname'];
+//  echo " " . $row['lastname'];
+//  echo " " . $row['email'];
+//  echo " " . $row['password'];
+//  echo " " . $row['hasallergy'];
+//  echo "<br>";
+//}
+
+
 mysqli_close($con);
 ?>
+
+<!-- 
 
               // include_once("./library.php"); // To connect to the database
               // $con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
@@ -182,7 +211,7 @@ mysqli_close($con);
               // echo "Last Name: $print_last\n";
               // echo "Email: $print_email\n";
               // echo "Allergy? $print_allergy\n";
-
+-->
 
 
             </p>
