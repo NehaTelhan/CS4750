@@ -224,7 +224,9 @@ mysqli_close($con);
           <!-- ENTER DELETE ALLERGY BUTTON -->
           <div class="row">
               <div class="form-group col-xs-12">
-                  <button type="submit" class="btn btn-info btn-block" href="viewProfile.php">Add</button>
+                <div class="text-center">
+                  <button type="submit" class="btn btn-danger" href="viewProfile.php">DELETE</button>
+          </div>
           </div>
           </div>
       </form>
