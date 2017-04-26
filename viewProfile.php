@@ -52,9 +52,6 @@
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
-                    <li class="page-scroll">
-                        <a href="#portfolio">Explore</a>
-                    </li>
                     <li class="">
                         <a href="PlantSearch.html"> Plant Search </a>
                     </li>
@@ -119,7 +116,7 @@ if (mysqli_connect_errno()) {
 echo("Can't connect to MySQL Server. Error code: " . mysqli_connect_error());
 }
 
-$inputEmail=$_SESSION['Email'];
+$inputEmail = $_SESSION['Email'];
 
 // Form the SQL query (a SELECT query)
 //$sql="SELECT uid, firstname, lastname, email, password, hasallergy FROM User WHERE email LIKE $inputEmail";
@@ -164,7 +161,7 @@ while($row = mysqli_fetch_array($result)) {
 mysqli_close($con);
 ?>
 
-<!-- 
+<!--
 
               // include_once("./library.php"); // To connect to the database
               // $con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
@@ -228,71 +225,45 @@ mysqli_close($con);
                     <hr class="star-light">
                 </div>
          <div class="container">
-  <div class="row">
+        <div class="row">
         <div class="col-md-12">
           <div class="text-center" >
-            <p>Add Allergies</p>
-  <!-- //               <form action="viewProfile.php#search" method="post"> -->
-                <form action="InsertAllergy.php" method="post">
-                          <div class="row control-group">
-                                <div class="form-group col-xs-12 floating-label-form-group controls">
+            <p>Add Your Allergies</p>
+            <form action="InsertAllergy.php" method="post">
+              <div class="row control-group">
+                 <div class="form-group col-xs-12 floating-label-form-group controls">
+                   <input type="text" class="form-control" placeholder="Name of Plant Allergy" id="allergy" name="allergy">
+                    <p class="help-block text-danger"></p>
+                 </div>
+               </div>
 
-                           <input type="text" class="form-control" placeholder="Plant Common Name" id="plantname" name="plantname" required data-validation-required-message="">
-                                   <p class="help-block text-danger"></p>
-                                </div>
-                           </div>
+               <?php
+               require_once('./library.php');
+               $con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
 
-                              <div id="success"></div>
-                             <div class="row">
-                                 <div class="form-group col-xs-12">
-                                     <button type="submit" class="btn btn-success btn-lg">Enter Allergy</button>
+               $sql = "SELECT cname FROM Plant";
+               $result = mysqli_query($sql);
+
+               echo "<select name='menu1' >";
+               while($row=mysql_fetch_array($result)){
+                 echo "<option value ='" . $row['cname'] . "'>" . $row['cname'] . "</option>";
+               }
+               echo "</select>";
+               ?>
 
 
-                                     <?php include_once("./library.php"); // To connect to the database
-                                  $con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
-                                  // Check connection
-                                  if (mysqli_connect_errno())
-                                    {
-                                      echo "Failed to connect to MySQL: " . mysqli_connect_error();
-                                    }
-                                  // Form the SQL query (an INSERT query)
-                                  $allergy_name = $_POST['plantname'];
-session_start();
-printr($_SESSION);
-$uid = $_SESSION['UID'];
 
-$query = "SELECT PID,Common_Name FROM Plant";
-$result = $con->query($query) or die ("Invalid Selection" . $con->error);
+                      <!-- ENTER ALLERGY BUTTON -->
+                      <div class="row">
+                          <div class="form-group col-xs-12">
+                              <button type="submit" class="btn btn-success btn-lg" href="InsertAllergy.php">Enter Allergy</button>
+                          </div>
 
-$rows = $result->num_rows;
+                      </div>
+                  </form>
 
-for ($i=0; $i<$rows; $i++) {
-  if ($result->fetch_array()['Common_Name']==$allergy_name) {
-    $pid = $result->fetch_array()['PID'];
-    $sql="INSERT INTO Allergic_to (UID, PID) VALUES ('$uid', '$pid')";
-  }
-  else
-    {
-      echo "Failed to Insert";
-    }
-}
-$_SESSION['Email'] = $email;
 
-echo $_SESSION["Email"];
-echo "UID: $uid";
 
-//                  $sql="INSERT INTO Allergic_To (UID) VALUES ()";
-
-if (!mysqli_query($con,$sql))
-  {
-    die('Error: ' . mysqli_error($con));
-  }
-else
-  {
-    //echo
-  }
- mysqli_close($con);
-?>
 
                                  </div>
                              </div>
