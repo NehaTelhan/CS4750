@@ -136,9 +136,6 @@ while($row = mysqli_fetch_array($result)) {
     echo "<br>";
     echo " "."<strong>Email</strong>: $row[email]";
     echo "<br>";
-    echo " "."<strong>Has Allergy?</strong>"." $row[hasallergy]";
-    echo "<br>";
-    echo " "."<i>(0 is no, 1 is yes) </i>";
   }
 }
 
@@ -147,7 +144,6 @@ mysqli_close($con);
 ?>
 
             </p>
-
             <!-- Display comprehensive allergy list -->
             </div>
             <div class="container">
@@ -195,19 +191,41 @@ foreach($pid_list as $item){
       $cname_item = $row2['cname'];
       echo "$cname_item <br> </div>";
     }
-  } 
+  }
 }
 mysqli_close($con);
-      
+
 ?>
 
-
-
-
           </div> <!-- closes container -->
-
         </div>
     </section>
+
+<!--Delete Allergy -->
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <h2>Delete Allergies</h2>
+            <hr class="star-primary">
+        </div>
+    </div>
+<form action="viewProfile.php" method="post">
+<div class="form-group">
+<p for="allergy">Separate each allergy to delete with a comma</p>
+<textarea class="form-control" id="delete" name="delete" rows="3" placeholder="Enter Plant ID or Plant Name"></textarea>
+</div>
+<!-- INSERT THE PHP HERE!!!!! -->
+
+</div> <!-- closes container -->
+
+
+          <!-- ENTER DELETE ALLERGY BUTTON -->
+          <div class="row">
+              <div class="form-group col-xs-12">
+                  <button type="submit" class="btn btn-info btn-block" href="viewProfile.php">Add</button>
+          </div>
+          </div>
+      </form>
 
 <!-- Insert Allergy -->
 <section class="success" id="search">
@@ -230,24 +248,15 @@ mysqli_close($con);
                           <div class="form-group col-xs-12">
                               <button type="submit" class="btn btn-info btn-block" href="InsertAllergy.php">Add</button>
                       </div>
-
                       </div>
                   </form>
-
-
-
-
-                                 </div>
-                             </div>
-                         </form>
-  </div>
-</div>
-</div>
-
-
-
-
-</section>
+                </div>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </section>
 
 
 
