@@ -9,7 +9,7 @@ if (mysqli_connect_errno())
     echo "Failed to connect to MySQL: " . mysqli_connect_error();
   }
 
-// Form the SQL query (an INSERT query)
+
 //session_start();
 //printr($_SESSION);
 
@@ -18,14 +18,35 @@ if (mysqli_connect_errno())
 
 $allergy_list = $_POST['allergy'];
 echo "ALLERGY LIST: $allergy_list";
-$allergy_results = str_replace( ',' , '<br />', $allergy_list);
-echo "<br>";
-echo "Your allergies are:";
-echo "<br>"; 
-echo "$allergy_results";
-echo "<br>";
 
+$parsed = explode(',', $allergy_list);
+echo "Array: $parsed";
 
+$cart = array();
+
+foreach($parsed as $value) {
+  $sql = "SELECT pid, cname FROM Plant";
+  $result = mysqli_query($con, $sql);
+  
+  while ($row = mysqli_fetch_array($result)) {
+    if ($row['cname'] == $value) {
+      $insert_pid = $row['pid'];
+      //      echo "INSERT PID: $insert_pid";
+      //      echo "<br>";
+      
+      array_push($cart, $insert_pid);
+
+    }
+  }
+}
+//print_r(array_values($cart));
+
+foreach($cart as $item) {
+  //  echo "$item";
+  //  echo "<br>";
+
+  $query = "INSERT INTO Allergic_To (uid, pid) VALUES ('$uid', '$item')";
+}
 
 
 if (!mysqli_query($con,$sql))
