@@ -40,6 +40,7 @@ table#t01 th {
 
 </style>
 <table id=t01 style=width:100%  border=1>
+<caption>  </caption>
 <th><strong>PlantID</strong></th>
 <th><strong>Symbol</strong></th>
 <th><strong>Genus</strong></th>
@@ -57,7 +58,8 @@ table#t01 th {
   }
   echo "</table>";
 //SADIYAHS: <button <font color='white'><a href='results.json' download='plantreport.json' style='color:white'></font>Export</a>
-echo "<div style='text-align: center'>   <a href='results.json' download='plantreport.json' class="btn btn-info" role="button">EXPORT</a> </div>";
+  echo "<br>";
+  echo "<div style='text-align: center'> <button type='button' class='btn btn-primary btn-lg'  <font color='black'><a href='results.json' download='plantreport.json' style='color:white'></font>Export</a></button> </div>";
 
 //  $response[] = $posts;
   $stmt->close();
