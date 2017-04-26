@@ -59,7 +59,7 @@
                         <a href="ArborSearch.html"> Arboretum Search </a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#portfolio">Profile</a>
+                        <a href="viewProfile.php">Profile</a>
                     </li>
                     <li class="page-scroll">
                         <a href="viewProfile.php#search">Add Allergies</a>
@@ -161,7 +161,7 @@ else{
 }
 
 mysqli_close($con);
-                ?>                
+                ?>
             </p>
 
             </div>
