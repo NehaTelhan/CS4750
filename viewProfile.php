@@ -59,7 +59,10 @@
                         <a href="ArborSearch.html"> Arboretum Search </a>
                     </li>
                     <li class="page-scroll">
-                        <a href="viewProfile.php">View Profile</a>
+                        <a href="#portfolio">Profile</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="#search">Your Allergies</a>
                     </li>
                     <li class="page-scroll">
                         <a href="Logout.php">Logout</a>
@@ -161,56 +164,6 @@ while($row = mysqli_fetch_array($result)) {
 mysqli_close($con);
 ?>
 
-<!--
-
-              // include_once("./library.php"); // To connect to the database
-              // $con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
-              //
-              // // Check connection
-              // if (mysqli_connect_errno())
-              //   {
-              //     echo "Failed to connect to MySQL: " . mysqli_connect_error();
-              //   }
-              //
-              // session_start();
-              // //print_r($_SESSION);
-              //
-              // if(isset($_SESSION['Email'])){
-              //   echo "Your session is running as " . $_SESSION['Email'];
-              // }
-              //
-              // // // What I want to do is get the UID associated with this e-mail address and check to see the hashed password we have saved matches the password
-              // $query1 = "SELECT firstname,lastname,email,hasallergy FROM User";
-              // $result1 = $con->query($query1) or die ("Invalid Selection" . $con->error);
-              //
-              // $rows1 = $result1->num_rows;
-              // echo "ROWS: $rows1";
-              //
-              // for ($i=0; $i<$rows1; $i++) {
-              //   if ($result1->fetch_array()['email']==$_SESSION['Email']) {
-              //     //$_Session['uid'] = $result1->fetch_array()['UID'];
-              //     $_SESSION['First_Name'] = $result1->fetch_array()['firstname'];
-              //     $_SESSION['Last_Name'] = $result1->fetch_array()['lastname'];
-              //     $_SESSION['Email_1'] = $result1->fetch_array()['email'];
-              //     $_SESSION['Has_allergy'] = $result1->fetch_array()['hasallergy'];
-              //   }
-              //   else {
-              //     echo "Invalid Login.";
-              //   }
-              // }
-              //
-              // $print_first = $_SESSION['First_Name'];
-              // $print_last = $_SESSION['Last_Name'];
-              // $print_email = $_SESSION['Email_1'];
-              // $print_allergy = $_SESSION['Has_allergy'];
-              //
-              // echo "First Name: $print_first\n";
-              // echo "Last Name: $print_last\n";
-              // echo "Email: $print_email\n";
-              // echo "Allergy? $print_allergy\n";
--->
-
-
             </p>
 
             </div>
@@ -228,36 +181,16 @@ mysqli_close($con);
         <div class="row">
         <div class="col-md-12">
           <div class="text-center" >
-            <p>Add Your Allergies</p>
             <form action="InsertAllergy.php" method="post">
-              <div class="row control-group">
-                 <div class="form-group col-xs-12 floating-label-form-group controls">
-                   <input type="text" class="form-control" placeholder="Name of Plant Allergy" id="allergy" name="allergy">
-                    <p class="help-block text-danger"></p>
-                 </div>
-               </div>
-
-               <?php
-               require_once('./library.php');
-               $con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
-
-               $sql = "SELECT cname FROM Plant";
-               $result = mysqli_query($sql);
-
-               echo "<select name='menu1' >";
-               while($row=mysql_fetch_array($result)){
-                 echo "<option value ='" . $row['cname'] . "'>" . $row['cname'] . "</option>";
-               }
-               echo "</select>";
-               ?>
-
-
-
+  <div class="form-group">
+    <p for="allergy">Separate each allergy with a comma</p>
+    <textarea class="form-control" id="allergy" name="allergy" rows="3"></textarea>
+  </div>
                       <!-- ENTER ALLERGY BUTTON -->
                       <div class="row">
                           <div class="form-group col-xs-12">
-                              <button type="submit" class="btn btn-success btn-lg" href="InsertAllergy.php">Enter Allergy</button>
-                          </div>
+                              <button type="submit" class="btn btn-info btn-block" href="InsertAllergy.php">Add</button>
+                      </div>
 
                       </div>
                   </form>
