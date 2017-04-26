@@ -62,7 +62,7 @@
                         <a href="viewProfile.php">Profile</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="viewProfile.php#search">Add Allergies</a>
+                        <a href="viewProfile.php#portfolio">Allergies</a>
                     </li>
                     <li class="page-scroll">
                         <a href="Logout.php">Logout</a>
@@ -80,15 +80,34 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="intro-text">
-                        <h1 class="name">Allergies Added!</h1>
+                        <h1 class="name">Allergy Added!</h1>
                           <div class="text-center">
                         <hr class="star-light">
-                        <span class="skills">Explore - Search - Research - Discover</span>
                     </div>
                 </div>
             </div>
-        </div>
-    </header>
+<br></br>
+<br></br>
+<!-- Insert Allergy -->
+<section class="success" id="search">
+  <div class="row">
+                    <div class="col-lg-12 text-center">
+                    <h3>Add More Allergies</h3>
+                </div>
+  <form action="InsertAllergy.php" method="post">
+   <div class="form-group">
+   <div align="center">
+   <font size="+1"><i>Please enter one at a time</i></font>
+   <br></br>
+<input placeholder="Enter Exact Plant Common Name" class="form-control" style="width: 500px" id="allergy" name="allergy"></input>
+   </div>
+</div>
+   
+<!-- ENTER ALLERGY BUTTON -->
+  <button type="submit" placeholder="Enter exact common name of Plant" class="btn btn-info btn-lg" href="InsertAllergy.php">ADD ALLERGY</button></center>
+   </form>
+ </section>
+</header>
 
     <!-- User Info Section -->
     <section id="portfolio">
@@ -168,49 +187,7 @@ mysqli_close($con);
         </div>
     </section>
 
-<!-- Insert Allergy -->
-<section class="success" id="search">
-  <div class="row">
-                    <div class="col-lg-12 text-center">
-                    <h2>Add more allergies</h2>
-                    <hr class="star-light">
-                </div>
-         <div class="container">
-        <div class="row">
-        <div class="col-md-12">
-          <div class="text-center" >
-            <form action="InsertAllergy.php" method="post">
-  <div class="form-group">
-    <p for="allergy">Separate each allergy with a comma</p>
-    <textarea class="form-control" id="allergy" name="allergy" rows="3"></textarea>
-  </div>
-                      <!-- ENTER ALLERGY BUTTON -->
-                      <div class="row">
-                          <div class="form-group col-xs-12">
-                              <button type="submit" class="btn btn-info btn-block" href="InsertAllergy.php">Add</button>
-                      </div>
-
-                      </div>
-                  </form>
-
-
-
-
-                                 </div>
-                             </div>
-                         </form>
-  </div>
-</div>
-</div>
-
-
-
-
-</section>
-
-
-
-    <!-- Footer -->
+<!-- Footer -->
     <footer class="text-center">
         <div class="footer-above">
             <div class="container">

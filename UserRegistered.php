@@ -152,7 +152,7 @@ mysqli_close($con);
 </div>
 
             <!-- Submit button !-->
-            <br>
+            <p></p>
             <div id="success"></div>
             <div class="row" style="text-align:center">
               <div class="form-group col-xs-12">

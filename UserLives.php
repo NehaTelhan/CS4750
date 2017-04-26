@@ -64,9 +64,6 @@
                         <a href="viewProfile.php"> Profile</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="InsertAllergy.php"> Allergies </a>
-                    </li>
-                    <li class="page-scroll">
                         <a href="Logout.php">Logout</a>
                     </li>
                 </ul>
@@ -82,7 +79,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="intro-text">
-                        <h1 class="name">Information added!</h1>
+                        <h2 class="name">Information added!</h2>
 <p>
   <?php
   session_start();
@@ -119,10 +116,11 @@
     }
   else
     {
-      echo "You live in $state";
+      echo "You live in $state.";
     }
   mysqli_close($con);
-  ?>
+  
+?>
 </p>
                         <div class="text-center">
                         <hr class="star-light">

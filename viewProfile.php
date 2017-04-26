@@ -62,7 +62,7 @@
                         <a href="#portfolio">Profile</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#search">Your Allergies</a>
+                        <a href="#search">Allergies</a>
                     </li>
                     <li class="page-scroll">
                         <a href="Logout.php">Logout</a>
@@ -84,6 +84,9 @@
                           <div class="text-center">
                         <hr class="star-light">
                         <span class="skills">Explore - Search - Research - Discover</span>
+                         <center>
+<br>
+   <img src="img/portfolio/water_lily.jpg" width="485" height="415" alt=""></center>
                     </div>
                 </div>
             </div>
@@ -124,10 +127,10 @@ $result = mysqli_query($con,$query);
 while($row = mysqli_fetch_array($result)) {
   if ($row['email'] == $inputEmail) {
     //echo "<br>";
-    echo " "."<big><div class='text-center'><strong>First Name</strong>: $row[firstname]";
-    echo "<br>";
+    echo " "."<div class='text-center'><big><strong>First Name: </strong> $row[firstname]";
+    echo "<br></br>";
     echo " "."<strong>Last Name</strong>: $row[lastname]";
-    echo "<br>";
+    echo "<br></br>";
     echo " "."<strong>Email</strong>: $row[email]</div>";
     echo "</big><br>";
   }
@@ -143,7 +146,9 @@ mysqli_close($con);
             
             <div class="row">
                 <div class="col-lg-12 text-center">
+                    <br></br>
                     <h2>Your Allergies</h2>
+
                     <hr class="star-primary">
                 </div>
             
@@ -179,12 +184,12 @@ foreach($pid_list as $item){
   //trying to match pid_item to commonname in plant
   $query = "SELECT pid, symbol, genus, species, cname, family FROM Plant";
   $result2 = mysqli_query($con,$query);
-  echo "<div class='text-center'> <br><strong>Plant_ID:</strong> $item </br>";
+  echo "<div class='text-center'> <br><big><strong>Plant_ID:</strong> $item </br>";
   while( $row2 = mysqli_fetch_array($result2)){
     if($row2['pid'] == $item){
 
       $cname_item = $row2['cname'];
-      echo "$cname_item <br> </div>";
+      echo "$cname_item </big> <br> </div>";
 
     }
   }
@@ -208,13 +213,13 @@ mysqli_close($con);
 <form action="viewProfile.php" method="post">
 <div class="form-group">
 <div class="text-left">
-<p for="allergy">Please enter one at a time.</p>
-<input type="text" class="form-control" id="delete" name="delete" rows="3" placeholder="Enter Plant ID"></input>
+<center>
+ <font size="+1"><i>Please enter one at a time</i></font>  
+ <input placeholder="Enter Plant ID" class="form-control" id="delete" name="delete"></input></center>
 </div>
 </div>
 
 <!-- INSERT THE PHP HERE!!!!! -->
-
 <?php
 include_once("./library.php"); // To connect to the database
 $con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
@@ -228,8 +233,6 @@ session_start();
 $email = $_SESSION['Email'];
 $query1 = "SELECT uid,email FROM User";
 $result = mysqli_query($con, $query1);
-
-
 
 while($row = mysqli_fetch_array($result)) {
   if($row['email'] == $email) {
@@ -272,12 +275,11 @@ mysqli_close($con);
           <!-- ENTER DELETE ALLERGY BUTTON -->
           <div class="row">
               <div class="form-group col-xs-12">
-                <div class="text-center">
-                  <button type="submit" class="btn btn-danger" href="viewProfile.php">DELETE</button>
-          </div>
-          </div>
-          </div>
-      </form>
+                <center>
+                  <button type="submit" class="btn btn-info btn-danger btn-lg" href="viewProfile.php">DELETE</button></center>
+  </div>
+  </div>
+  </form>
 
 <!-- Insert Allergy -->
 <section class="success" id="search">
@@ -293,24 +295,23 @@ mysqli_close($con);
             <form action="InsertAllergy.php" method="post">
   <div class="form-group">
   <div align="center">
-    <p for="allergy">Please enter one at a time</p>
+ <font size="+1"><i>Please enter one at a time</i></font>  
     <input placeholder="Enter Exact Plant Common Name" class="form-control" style="width: 500px" id="allergy" name="allergy"></input>
   </div>
 </div>
                       <!-- ENTER ALLERGY BUTTON -->
                       <div class="row">
                           <div class="form-group col-xs-12">
-                              <button type="submit" placeholder="Enter exact common name of Plant" class="btn btn-info" href="InsertAllergy.php">Add</button>
+                              <center>
+                              <button type="submit" placeholder="Enter exact common name of Plant" class="btn btn-info btn-lg" href="InsertAllergy.php">ADD ALLERGY</button></center>
                       </div>
                       </div>
                   </form>
-                </div>
-                              </div>
-                            </form>
-                          </div>
-                        </div>
-                      </div>
-                    </section>
+
+  
+  </div>
+  </div>
+ </section>
 
 
 
