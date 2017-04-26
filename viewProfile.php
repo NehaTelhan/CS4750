@@ -189,11 +189,13 @@ foreach($pid_list as $item){
   //trying to match pid_item to commonname in plant
   $query = "SELECT pid, symbol, genus, species, cname, family FROM Plant";
   $result2 = mysqli_query($con,$query);
-  echo "<div class='text-center'> <br> $item </br>";
+  echo "<div class='text-center'> <br><strong>Plant_ID:</strong> $item </br>";
   while( $row2 = mysqli_fetch_array($result2)){
     if($row2['pid'] == $item){
+      
       $cname_item = $row2['cname'];
       echo "$cname_item <br> </div>";
+ 
     }
   } 
 }
