@@ -105,13 +105,12 @@
             <div>
               <p>
 
-
-
                 <?php
 require_once('./library.php');
 $con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
 
 session_start();
+
 // Check connection
 if (mysqli_connect_errno()) {
 echo("Can't connect to MySQL Server. Error code: " . mysqli_connect_error());
@@ -120,14 +119,14 @@ echo("Can't connect to MySQL Server. Error code: " . mysqli_connect_error());
 $inputEmail = $_SESSION['Email'];
 $uid = $_SESSION['UID'];
 
-$query = "SELECT uid, firstname, lastname, email, password, hasallergy FROM User";
+$query = "SELECT uid, firstname, lastname, email, password FROM User";
 $result = mysqli_query($con,$query);
 
 
 while($row = mysqli_fetch_array($result)) {
   if ($row['email'] == $inputEmail) {
     //echo "<br>";
-    echo " "."<div class='text-center'><big><strong>First Name: </strong> $row[firstname]";
+    echo " ". "<div class='text-center'><big><strong>First Name: </strong> $row[firstname]";
     echo "<br></br>";
     echo " "."<strong>Last Name</strong>: $row[lastname]";
     echo "<br></br>";
