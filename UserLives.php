@@ -55,10 +55,16 @@
                         <a href="#portfolio">Explore</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#page-top">View Profile</a>
+                        <a href="PlantSearch.html"> Plant Search </a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#search"> Allergies </a>
+                        <a href="ArborSearch.html"> Arboretum Search </a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="viewProfile.php"> View Profile</a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="InsertAllergy.php"> Allergies </a>
                     </li>
                     <li class="page-scroll">
                         <a href="Logout.php">Logout</a>
@@ -76,7 +82,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="intro-text">
-                        <h1 class="name">Thank you for registering!</h1>
+                        <h1 class="name">Information added!</h1>
 <p>
   <?php
   session_start();
@@ -93,14 +99,14 @@
   // Form the SQL query (an INSERT query)
   $email = $_SESSION['Email'];
 
-  $query = "SELECT UID,Email FROM User";
+  $query = "SELECT uid,email FROM User";
   $result = $con->query($query) or die ("Invalid Selection" . $con->error);
 
   $rows = $result->num_rows;
 
   for ($i=0; $i<$rows; $i++) {
-    if ($result->fetch_array()['Email'] == $email){
-      $uid = $result->fetch_array()['UID'];
+    if ($result->fetch_array()['email'] == $email){
+      $uid = $result->fetch_array()['uid'];
     }
   }
 
@@ -113,14 +119,11 @@
     }
   else
     {
-      echo "Residential Information Added!\n";
-      echo "Your state: $state";
+      echo "You live in $state";
     }
   mysqli_close($con);
   ?>
 </p>
-
-      <h2> Start your plant explorations below </h2>
                         <div class="text-center">
                         <hr class="star-light">
                         <span class="skills">Explore - Search - Research - Discover</span>
@@ -204,199 +207,7 @@
         </div>
     </section>
 
-<!-- PLANT SEARCH SECTION!!!!!! -->
-<section class="success" id="search">
-  <div class="row">
-                    <div class="col-lg-12 text-center">
-                    <h2>  Plant Search</h2>
-                    <hr class="star-light">
-                </div>
-         <div class="container">
-  <div class="row">
-        <div class="col-md-12">
- <div class="text-center" >
-<p>Search plant by common name</p>
-  </div>
 
-
-<!-- #######OLD PLANT SEARCH ######## -->
-   <form action="PlantSelect.php#search" method="POST">
-            <div id="custom-search-input">
-                <div class="input-group col-md-12">
-                    <input type="text" id="commonname" name="commonname" class="form-control input-lg" required data-validation-required-message="" placeholder="Type To Search" />
-                    <span class="input-group-btn">
-                        <button class="btn btn-info btn-lg" type="submit" href="PlantSelect.php#search"</button>
-                          <i class="glyphicon glyphicon-search"> </i>
-                        </button>
-                    </span>
-                </div>
-            </div>
-</form>
-<!-- ######## -->
-
-<!--### AJAX WAY #### -->
-<head>
-    <script src="jquery-1.6.2.min.js" type="text/javascript"></script>
-    <script src="jquery-ui-1.8.16.custom.min.js" type="text/javascript"></script>
-    <title>Sailor Search</title>
-    <script>
-      $(document).ready(function() {
-      $( "#searchNameinput" ).change(function() {
-
-      $.ajax({
-      url: 'PlantSelect.php',
-      data: {searchName: $( "#searchNameinput" ).val()},
-      success: function(data){
-      $('#searchNameresult').html(data);
-
-      }
-      });
-      });
-
-      });
-      </script>
-</head>
-<body>
-  <h3>Search substring of sname in Sailors Table</h3>
-
-  <input class="xlarge" id="searchNameinput" type="search" size="100" placeholder="Sailor's Name Contains"/>
-
-  <div id="searchNameresult">Search Result</div>
-
-  <br/><br/>
-
-</body>
-<!-- ## AJAX WAY ## -->
-        </div>
-</div>
-</section>
-
-
-<!-- ARBORTEUM SECTION!!!!!!!!!!!!!!!! -->
-<section class="success" id="about">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2>   Arboretum Search  </h2>
-                    <hr class="star-light">
-                </div>
-            </div>
-	    <div class="container">
-            <div class="row">
-              <div class="col-md-12">
-		<div class="text-center">
-	      <p> Search Arboretum by State or Region</p>
-        </div>
-	</div>
-
-<!--Enter State name -->
-   <form action="LoginUser.html#about" method="POST">
-            <div id="custom-search-input">
-                <div class="input-group col-md-12">
-                    <input type="text" id="state" name="state" class="form-control input-lg" required data-validation-required-message="" placeholder="Enter the full name of the State" />
-                    <span class="input-group-btn">
-                        <button class="btn btn-info btn-lg" type="submit" </button>
-                          <i class="glyphicon glyphicon-search"> </i>
-                        </button>
-                    </span>
-                </div>
-            </div>
-
-<!-- Submit button !-->
-
-            <div id="success"></div>
-            <div class="row">
-              <div class="form-group col-xs-12">
-                <button type="submit" class="btn btn-primary btn-lg" >Search</button>
-              </div>
-            </div>
-</form>
-    </section>
-
-<section class="success" id="search">
-  <div class="row">
-                    <div class="col-lg-12 text-center">
-                    <h2>Plant Allergies</h2>
-                    <hr class="star-light">
-                </div>
-         <div class="container">
-  <div class="row">
-        <div class="col-md-12">
-          <div class="text-center" >
-            <p>Add Allergies</p>
-  <!-- //               <form action="viewProfile.php#search" method="post"> -->
-                <form action="InsertAllergy.php" method="post">
-                          <div class="row control-group">
-                                <div class="form-group col-xs-12 floating-label-form-group controls">
-
-                           <input type="text" class="form-control" placeholder="Plant Common Name" id="plantname" name="plantname" required data-validation-required-message="">
-                                   <p class="help-block text-danger"></p>
-                                </div>
-                           </div>
-
-                              <div id="success"></div>
-                             <div class="row">
-                                 <div class="form-group col-xs-12">
-                                     <button type="submit" class="btn btn-success btn-lg">Enter Allergy</button>
-
-
-                                     <?php include_once("./library.php"); // To connect to the database
-                                  $con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
-                                  // Check connection
-                                  if (mysqli_connect_errno())
-                                    {
-                                      echo "Failed to connect to MySQL: " . mysqli_connect_error();
-                                    }
-                                  // Form the SQL query (an INSERT query)
-                                  $allergy_name = $_POST['plantname'];
-session_start();
-printr($_SESSION);
-$uid = $_SESSION['UID'];
-
-$query = "SELECT PID,Common_Name FROM Plant";
-$result = $con->query($query) or die ("Invalid Selection" . $con->error);
-
-$rows = $result->num_rows;
-
-for ($i=0; $i<$rows; $i++) {
-  if ($result->fetch_array()['Common_Name']==$allergy_name) {
-    $pid = $result->fetch_array()['PID'];
-    $sql="INSERT INTO Allergic_to (UID, PID) VALUES ('$uid', '$pid')";
-  }
-  else
-    {
-      echo "Failed to Insert";
-    }
-}
-$_SESSION['Email'] = $email;
-
-echo $_SESSION["Email"];
-echo "UID: $uid";
-
-//                  $sql="INSERT INTO Allergic_To (UID) VALUES ()";
-
-if (!mysqli_query($con,$sql))
-  {
-    die('Error: ' . mysqli_error($con));
-  }
-else
-  {
-    //echo
-  }
- mysqli_close($con);
-?>
-
-                                 </div>
-                             </div>
-                         </form>
-  </div>
-</div>
-</div>
-
-
-
-
-</section>
 
     <!-- Footer -->
     <footer class="text-center">

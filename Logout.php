@@ -51,26 +51,6 @@
                     <li class="hidden">
                         <a href="#page-top"></a>
                     </li>
-                    <li class="page-scroll">
-                        <a href="#portfolio">Explore</a>
-                    </li>
- <li class="page-scroll">
-                        <a href="#search">Plant Search</a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="#about">Arboretums Search</a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="#contact">User Profile</a>
-                    </li>
-       <li class="page-scroll">
-                        <a href="index.html#contact2">Log In</a>
-                    </li>
-           <br>
-                    <li class="page-scroll">
-                        <a>
-                      </a>
-                    </li> </br>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -193,8 +173,8 @@ else
     //End the session so user is effectively logged out.
     session_start();
     session_destroy();
-    header('Location: LoginUser.php');
-    exit;    
+    //header('Location: LoginUser.php');
+    exit;
   }
 mysqli_close($con);
                         ?>

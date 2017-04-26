@@ -54,16 +54,16 @@
                     <li class="page-scroll">
                         <a href="#portfolio">Explore</a>
                     </li>
- <li class="page-scroll">
-                        <a href="#search">Plant Search</a>
+                    <li class="page-scroll">
+                        <a href="PlantSearch.html">Plant Search</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#about">Arboretums Search</a>
+                        <a href="ArborSearch.html">Arboretums Search</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#contact">User Profile</a>
+                        <a href="viewProfile.php">User Profile</a>
                     </li>
-       <li class="page-scroll">
+                    <li class="page-scroll">
                         <a href="Logout.php">Log Out</a>
                     </li>
                 </ul>
@@ -82,7 +82,8 @@
                     <div class="intro-text">
                         <h1 class="name">Registration Success!</h1>
                           <!--User Insert!-->
- <p>  <?php
+ <p>
+   <?php
    include_once("./library.php"); // To connect to the database
 
 $con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
@@ -102,7 +103,7 @@ session_start();
 $_SESSION["Email"] = $email;
 
 
-$sql="INSERT INTO User (First_Name, Last_Name, Email, Password) VALUES ('$first_name', '$last_name', '$email', '$hashed_password')";
+$sql="INSERT INTO User (firstname, lastname, email, password) VALUES ('$first_name', '$last_name', '$email', '$hashed_password')";
 
 if (!mysqli_query($con,$sql))
   {
@@ -147,13 +148,13 @@ mysqli_close($con);
     <input type="text" class="form-control" placeholder="State" id="state" name="state" required data-validation-required-message="Please enter your State of residence.">
     <p class="help-block text-danger"></p>
   </div>
-              </div>
+  </div>
 </div>
 
             <!-- Submit button !-->
             <br>
             <div id="success"></div>
-            <div class="row">
+            <div class="row" style="text-align:center">
               <div class="form-group col-xs-12">
                 <button type="submit" class="btn btn-success btn-lg" href="UserLives.php" >Submit</button>
               </div>
@@ -238,63 +239,6 @@ mysqli_close($con);
         </div>
     </section>
 
-<!-- PLANT SEARCH SECTION!!!!!! -->
-<section class="success" id="search">
-  <div class="row">
-                    <div class="col-lg-12 text-center">
-                    <h2>  Plant Search</h2>
-                    <hr class="star-light">
-                </div>
-         <div class="container">
-  <div class="row">
-        <div class="col-md-12">
- <div class="text-center" >
-<p>Enter anything you know about the plant!</p>
-  </div>
-   <form action="PlantSelect.php" method="post">
-            <div id="custom-search-input">
-                <div class="input-group col-md-12">
-                    <input type="text" class="form-control input-lg" placeholder="Type To Search" />
-                    <span class="input-group-btn">
-                        <button class="btn btn-info btn-lg" type="button">
-                          <i class="glyphicon glyphicon-search"> </i>
-                        </button>
-                    </span>
-                </div>
-            </div>
-</form>
-        </div>
-  </div>
-</div>
-</div>
-</section>
-
-
-
-    <!-- ARBORTEUM SECTION!!!!!!!!!!!!!!!! -->
-    <section class="success" id="about">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2>Arboretum Search</h2>
-                    <hr class="star-light">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-4 col-lg-offset-2">
-                    <p> Insert Something Here Like a Search Bar ...IDK</p>
-                </div>
-                <div class="col-lg-4">
-                    <p>Whether you're a student looking to showcase your work, a professional looking to attract clients, or a graphic artist looking to share your projects, this template is the perfect starting point!</p>
-                </div>
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <a href="#" class="btn btn-lg btn-outline">
-                        <i class="fa fa-download"></i> Download Theme
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Footer -->
     <footer class="text-center">
