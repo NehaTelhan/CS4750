@@ -35,6 +35,7 @@ table#t01 th {
 
 </style>
 <table id=t01 style=width:100%  border=1>
+<caption></caption>
 <th><strong>Arboretum Name</strong></th>
 <th><strong>Number of Species</strong></th>
 \n";
@@ -44,7 +45,8 @@ table#t01 th {
     fwrite($fp, json_encode(array("$arborname", "$numspecies")));
   }
   echo "</table>";
-echo "<div style='text-align: center'><font color='white'><a href='arbor_result.json' download='arborreport.json' style='color:white'></font>Export</a></div>";
+  echo "<br>";
+  echo "<div style='text-align: center'> <button type='button' class='btn btn-primary btn-lg'  <font color='black'><a href='results.json' download='plantreport.json' style='color:white'></font>Export</a></button> </div>";
   $stmt->close();
 }
 
