@@ -225,7 +225,7 @@ mysqli_close($con);
                     <hr class="star-light">
                 </div>
          <div class="container">
-  <div class="row">
+        <div class="row">
         <div class="col-md-12">
           <div class="text-center" >
             <p>Add Your Allergies</p>
@@ -237,16 +237,33 @@ mysqli_close($con);
                  </div>
                </div>
 
-                       <div id="success"></div>
+               <?php
+               require_once('./library.php');
+               $con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
+
+               $sql = "SELECT cname FROM Plant";
+               $result = mysqli_query($sql);
+
+               echo "<select name='menu1' >";
+               while($row=mysql_fetch_array($result)){
+                 echo "<option value ='" . $row['cname'] . "'>" . $row['cname'] . "</option>";
+               }
+               echo "</select>";
+               ?>
+
+
+
+                      <!-- ENTER ALLERGY BUTTON -->
                       <div class="row">
                           <div class="form-group col-xs-12">
-                              <button type="submit" class="btn btn-success btn-lg">Enter Allergy</button>
+                              <button type="submit" class="btn btn-success btn-lg" href="InsertAllergy.php">Enter Allergy</button>
                           </div>
+
                       </div>
                   </form>
 
 
-                                     
+
 
                                  </div>
                              </div>

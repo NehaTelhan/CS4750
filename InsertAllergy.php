@@ -29,8 +29,6 @@ for ($i=0; $i<$rows; $i++) {
       echo "Failed to Insert";
     }
 }
-
-
 echo "UID: $uid";
 
 //                  $sql="INSERT INTO Allergic_To (UID) VALUES ()";
