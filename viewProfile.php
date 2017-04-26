@@ -109,7 +109,7 @@ require_once('./library.php');
 $con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
 
 session_start();
-print_r($_SESSION);
+//print_r($_SESSION);
 
 if(isset($_SESSION['Email'])){
   echo "Your session is running as " . $_SESSION['Email'];
@@ -120,17 +120,16 @@ echo("Can't connect to MySQL Server. Error code: " . mysqli_connect_error());
 }
 
 $inputEmail = $_SESSION['Email'];
+$uid = $_SESSION['UID'];
+echo "UID: $uid";
 
 // Form the SQL query (a SELECT query)
 //$sql="SELECT uid, firstname, lastname, email, password, hasallergy FROM User WHERE email LIKE $inputEmail";
 //$result= mysqli_query($con,$sql);
 
 $query = "SELECT uid, firstname, lastname, email, password, hasallergy FROM User";
-//$result = $con->query($query) or die ("Invalid Selection" . $con->error);
-//$rows = $result->num_rows;
 $result = mysqli_query($con,$query);
 
-//echo "INPUT EMAIL: $inputEmail";
 
 while($row = mysqli_fetch_array($result)) {
   if ($row['email'] == $inputEmail) {
@@ -148,17 +147,19 @@ while($row = mysqli_fetch_array($result)) {
   }
 }
 
+$query1 = "SELECT uid, pid FROM Allergic_To";
+$result1 = mysqli_query($con, $query1);
 
-// Print the data from the table row by row
-//while($row = mysqli_fetch_array($result)) {
-//  echo $row['uid'];
-//  echo " " . $row['firstname'];
-//  echo " " . $row['lastname'];
-//  echo " " . $row['email'];
-//  echo " " . $row['password'];
-//  echo " " . $row['hasallergy'];
-//  echo "<br>";
-//}
+while($row1=mysqli_fetch_array($result1)) {
+  if($row1['uid']==$uid) {
+    echo $row1['pid'];
+    echo "<br>";
+  }
+  else {
+    //    echo "There are no allergies associated with your account on record.";
+    echo "";
+  }
+}
 
 
 mysqli_close($con);

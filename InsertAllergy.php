@@ -135,7 +135,7 @@ foreach($parsed as $value) {
       $insert_pid = $row['pid'];
       array_push($cart, $insert_pid);
       echo "<br>";
-      echo "<div class='text-center'> <div style='padding-right: 10px;'><p>Plant_ID: $insert_pid</p></div> <div style='padding-left: 10px;'><p>Common Name: $value</p></div></div>";
+      echo "<div class='text-center'> <div style='padding-right: 10px;'><p><strong>Plant_ID</strong>: $insert_pid</p></div> <div style='padding-left: 10px;'><p><strong>Common Name</strong>: $value</p></div></div>";
       echo "<br>";
 
     }
