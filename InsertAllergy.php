@@ -124,7 +124,7 @@ while($row = mysqli_fetch_array($result)) {
 
 $uid = $_SESSION['UID'];
 $allergy_list = $_POST['allergy'];
-$parsed = explode(',', $allergy_list);
+$parsed = explode(', ', $allergy_list);
 $cart = array();
 
 foreach($parsed as $value) {
