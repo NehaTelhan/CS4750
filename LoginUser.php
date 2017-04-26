@@ -263,7 +263,7 @@ echo "<br>";
                         <div class="modal-body">
                             <h2>Succulents</h2>
                             <hr class="star-primary">
-                            <img src="img/portfolio/cabin.png" class="img-responsive img-centered" alt="">
+
 						       <p>Succulent comes from the Latin word <i>"Sucus"</i>, which means juice or sap. Succulents are sometimes referred to as 'Water Storage Plants' as they have some parts that are more normally thickened and fleshy, usually to retain water in arid climates or soil conditions Many plant families have multiple succulents found within them (over 25 plant families). In some families, such as Aizoaceae, Cactaceae, and Crassulaceae, most species are succulents. </p>
                             <ul class="list-inline item-details">
 						       <li>Wikipedia:
@@ -300,7 +300,7 @@ echo "<br>";
                         <div class="modal-body">
                             <h2>Aquatic Plants</h2>
                             <hr class="star-primary">
-                            <img src="img/portfolio/cake.png" class="img-responsive img-centered" alt="">
+
 						       <p> Aquatic plants are plants that have adapted to living in aquqatic environments (saltwater or freshwater). They are also refered to as <i>hydrophytes</i> or <i>macrophytes</i>. One of the largest aquatic plants in the world is the <a href="https://en.wikipedia.org/wiki/Victoria_amazonica">Amazon Water Lily</a>, one of the smallest is the minute <a href="https://en.wikipedia.org/wiki/Duckweed">duckweed</a>. </p>
                             <ul class="list-inline item-details">
 						       <li>Wikipedia:
@@ -337,7 +337,7 @@ echo "<br>";
                         <div class="modal-body">
                             <h2>Arboretums</h2>
                             <hr class="star-primary">
-                            <img src="img/portfolio/circus.png" class="img-responsive img-centered" alt="">
+
 						       <p>The United States as numerous botanical gardens devoted to treeds, weeds, flowers and all plants alike. They are places where many varieties of trees are grown for research, educational and ornamental purposes; where trees and shrubs are cultivated for exhibition.</p>
                             <ul class="list-inline item-details">
 						       <li>National Arboretum:
@@ -374,7 +374,7 @@ echo "<br>";
                         <div class="modal-body">
                             <h2>Exotic Plants</h2>
                             <hr class="star-primary">
-                            <img src="img/portfolio/game.png" class="img-responsive img-centered" alt="">
+
                             <p> Interested in learning more about exotic plants and how to obtain them. Read more</p>
 						       <p>Exotic plants, or <strong>introduced plants</strong> are plant species that are introduced to a region in which they are not native. Many cultivate plants are used as ornamentals and are often considered <a href="http://horticultureandsoilscience.wikia.com/wiki/Invasive_Plants">invasive species</p>
                             <ul class="list-inline item-details">
@@ -412,7 +412,7 @@ echo "<br>";
                         <div class="modal-body">
                             <h2>Taking Care of Your Plant</h2>
                             <hr class="star-primary">
-                            <img src="img/portfolio/safe.png" class="img-responsive img-centered" alt="">
+
 						       <p>Most succulents need half a day to a full day of sunlight. The soil level should be on the same depth on the plant. It is important to water your succulent thoroughly.  Fertilizer should be used sparsely, about once a month is all they need.</p>
                             <ul class="list-inline item-details">
 						       <li>Simply Succulents:
@@ -449,7 +449,7 @@ echo "<br>";
                         <div class="modal-body">
                             <h2>Flowers and their Endless Beauty</h2>
                             <hr class="star-primary">
-                            <img src="img/portfolio/submarine.png" class="img-responsive img-centered" alt="">
+
 						       <p>Flowers are the reproductive part of the plant. They are known to have an aromatic scent when they output maximal levels of pollen. Each type of flower is extremely unique; they have different types of petals, scents and nutritional requirements. Some plants (like <a href="http://sunbulb.com/info/wp-content/uploads/2010/08/orchids.jpg">orchids</a>) don't even need soil to grow!</p>
                            <ul class="list-inline item-details">
                                 <li>Source:
