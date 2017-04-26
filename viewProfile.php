@@ -188,10 +188,10 @@ foreach($pid_list as $item){
   echo "<div class='text-center'> <br><strong>Plant_ID:</strong> $item </br>";
   while( $row2 = mysqli_fetch_array($result2)){
     if($row2['pid'] == $item){
-      
+
       $cname_item = $row2['cname'];
       echo "$cname_item <br> </div>";
- 
+
     }
   }
 }
@@ -216,7 +216,40 @@ mysqli_close($con);
 <p for="allergy">Separate each allergy to delete with a comma</p>
 <textarea class="form-control" id="delete" name="delete" rows="3" placeholder="Enter Plant ID or Plant Name"></textarea>
 </div>
+
 <!-- INSERT THE PHP HERE!!!!! -->
+<?php
+include_once("./library.php"); // To connect to the database
+$con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
+// Check connection
+if (mysqli_connect_errno())
+  {
+    echo "Failed to connect to MySQL: " . mysqli_connect_error();
+  }
+session_start();
+//print_r($_SESSION);
+$email = $_SESSION['Email'];
+$query1 = "SELECT uid,email FROM User";
+$result = mysqli_query($con, $query1);
+while($row = mysqli_fetch_array($result)) {
+  if($row['email'] == $email) {
+    $uid = $row['uid'];
+  }
+}
+$uid = $_SESSION['UID'];
+
+$delete_me = $_POST['delete'];
+
+$sql="DELETE FROM Allergic_To WHERE PID=$delete_me";
+
+if($con->query($sql) == True) {
+  echo "Record deleted successfully";
+} else {
+  echo "Error deleting record: " . $con->error;
+}
+
+mysqli_close($con);
+?>
 
 </div> <!-- closes container -->
 
