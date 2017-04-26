@@ -139,21 +139,6 @@ while($row = mysqli_fetch_array($result)) {
     echo " "."<strong>Has Allergy?</strong>"." $row[hasallergy]";
     echo "<br>";
     echo " "."<i>(0 is no, 1 is yes) </i>";
-
-  }
-}
-
-$query1 = "SELECT uid, pid FROM Allergic_To";
-$result1 = mysqli_query($con, $query1);
-
-while($row1=mysqli_fetch_array($result1)) {
-  if($row1['uid']==$uid) {
-    echo $row1['pid'];
-    echo "<br>";
-  }
-  else {
-    //    echo "There are no allergies associated with your account on record.";
-    echo "";
   }
 }
 
@@ -175,39 +160,50 @@ mysqli_close($con);
 
             <!--INSERT PHP HERE TO DISPLAY ALL THE ALLERGIES !-->
 
-            <?php
-            require_once('./library.php');
-            $con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
+<?php
+  require_once('./library.php');
+$con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
 
-            if (mysqli_connect_errno()) {
-            echo("Can't connect to MySQL Server. Error code: " . mysqli_connect_error());
-            }
+if (mysqli_connect_errno()) {
+  echo("Can't connect to MySQL Server. Error code: " . mysqli_connect_error());
+}
 
-            session_start();
-            $uid = $_SESSION['UID'];
+session_start();
+$uid = $_SESSION['UID'];
 
-            $sql="SELECT uid, pid FROM Allergic_To";
-            $result = mysqli_query($con,$sql);
+$sql="SELECT uid, pid FROM Allergic_To";
+$result = mysqli_query($con,$sql);
 
-            $pid_list = array();
+$pid_list = array();
+$cname_list = array();
 
-            while($row=mysqli_fetch_array($result)){
-              if($row['uid']==$uid){
-                $pid_item = $row['pid'];
-                array_push($pid_list, $pid_item);
-              }
-            }
+while($row=mysqli_fetch_array($result)){
+  if($row['uid']==$uid){
+    $pid_item = $row['pid'];
+    array_push($pid_list, $pid_item);
+    //print_r($pid_list);
+  }
+}
 
-            foreach($pid_list as $item){
-              //trying to match pid_item to commonname in plant
-              $query = "SELECT pid, symbol, genus, species, cname, family FROM Plant WHERE pid=$item";
-              $result2 = mysqli_query($con,$query);
-              echo "Result2: $result2";
-              $row2 = mysqli_fetch_array($result2);
-              echo "Row2: $row2";
-              //echo "Name: $row2['cname'] and its PID is $row2:['']"
-            }
-            ?>
+foreach($pid_list as $item){
+  //trying to match pid_item to commonname in plant
+  $query = "SELECT pid, symbol, genus, species, cname, family FROM Plant";
+  $result2 = mysqli_query($con,$query);
+  echo "<div class='text-center'> <br> $item </br>";
+  while( $row2 = mysqli_fetch_array($result2)){
+    if($row2['pid'] == $item){
+      $cname_item = $row2['cname'];
+      echo "$cname_item <br> </div>";
+    }
+  } 
+}
+mysqli_close($con);
+      
+?>
+
+
+
+
           </div> <!-- closes container -->
 
         </div>
