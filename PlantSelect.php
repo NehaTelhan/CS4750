@@ -56,8 +56,8 @@ table#t01 th {
 
   }
   echo "</table>";
-
-echo "<div style='text-align: center'><font color='white'><a href='results.json' download='plantreport.json' style='color:white'></font>Export</a></div>";
+//SADIYAHS: <button <font color='white'><a href='results.json' download='plantreport.json' style='color:white'></font>Export</a>
+echo "<div style='text-align: center'>   <a href='results.json' download='plantreport.json' class="btn btn-info" role="button">EXPORT</a> </div>";
 
 //  $response[] = $posts;
   $stmt->close();
