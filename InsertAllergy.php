@@ -10,17 +10,27 @@ if (mysqli_connect_errno())
   }
 
 
-//session_start();
-//printr($_SESSION);
+session_start();
+print_r($_SESSION);
 
-//$uid = $_SESSION['uid'];
-//$email = $_SESSION['Email'];
+$email = $_SESSION['Email'];
+
+$query1 = "SELECT uid,email FROM User";
+$result = mysqli_query($con, $query1);
+
+while($row = mysqli_fetch_array($result)) {
+  if($row['email'] == $email) {
+    $uid = $row['uid'];
+  }
+}
+
+$uid = $_SESSION['UID'];
+
 
 $allergy_list = $_POST['allergy'];
 echo "ALLERGY LIST: $allergy_list";
 
 $parsed = explode(',', $allergy_list);
-echo "Array: $parsed";
 
 $cart = array();
 
@@ -31,8 +41,8 @@ foreach($parsed as $value) {
   while ($row = mysqli_fetch_array($result)) {
     if ($row['cname'] == $value) {
       $insert_pid = $row['pid'];
-      //      echo "INSERT PID: $insert_pid";
-      //      echo "<br>";
+      //echo "INSERT PID: $insert_pid";
+      // echo "<br>";
       
       array_push($cart, $insert_pid);
 
@@ -42,21 +52,20 @@ foreach($parsed as $value) {
 //print_r(array_values($cart));
 
 foreach($cart as $item) {
-  //  echo "$item";
-  //  echo "<br>";
+  echo "<br>";
+  echo "$item";
+  echo "<br>";
 
   $query = "INSERT INTO Allergic_To (uid, pid) VALUES ('$uid', '$item')";
-}
 
-
-if (!mysqli_query($con,$sql))
-  {
-    die('Error: ' . mysqli_error($con));
+  if (!mysqli_query($con,$query))
+    {
+      die('Error: ' . mysqli_error($con));
+    }
+  else{
+    echo "PROBLEM!";
   }
-else{
-  echo "PROBLEM!";
 }
-
 mysqli_close($con);
 
 ?>

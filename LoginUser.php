@@ -83,15 +83,34 @@
                             <h1 class="name">Login Success!</h1>
                             <p> Click an option in your menu bar to get started! </p>
                               <p>
+   
+<?php
+require_once('./library.php');
+$con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
 
-                              <?php
-                              $email = $_POST['emailFromLogin'];
-                              session_start();
-                              $_SESSION['Email'] = $email;
-                              print_r($_SESSION);
+$email = $_POST['emailFromLogin'];
 
-                              echo "You are logged in as $email."
-                              ?>
+session_start();
+$_SESSION['Email'] = $email;
+
+$query1 = "SELECT uid,email FROM User";
+$result = mysqli_query($con, $query1);
+
+while($row = mysqli_fetch_array($result)) {
+  if($row['email'] == $email) {
+    $uid = $row['uid'];
+    echo "UID IS: $uid";
+  }
+}
+$_SESSION['UID'] = $uid;
+
+print_r($_SESSION);
+
+echo "<br>";
+echo "You are logged in as $email";
+echo "<br>";
+echo "Your UID is: $uid";
+?>
                               </p>
 
                             <hr class="star-light">
