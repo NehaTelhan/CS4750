@@ -1,15 +1,15 @@
 <?php
 require "dbconnect.php";
 $db = DbUtil::loginConnection();
-ini_set('display_errors', 'On');
-error_reporting(E_ALL);
+//ini_set('display_errors', 'On');
+//error_reporting(E_ALL);
 $stmt = $db->stmt_init();
 $response = array();
 $posts = array();
 $fp = fopen('results.json', 'w');
-if (false === $fp) {
-    throw new RuntimeException('Unable to open log file for writing');
-}
+//if (false === $fp) {
+//    throw new RuntimeException('Unable to open log file for writing');
+//}
 if($stmt->prepare("select pid, symbol, genus, species, cname, family from Plant where cname like ?") or die(mysqli_error($db))) {
   $searchString = '%' . $_GET['searchName'] . '%';
   $stmt->bind_param(s, $searchString);
