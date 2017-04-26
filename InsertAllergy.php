@@ -10,41 +10,32 @@ if (mysqli_connect_errno())
   }
 
 // Form the SQL query (an INSERT query)
-session_start();
-printr($_SESSION);
+//session_start();
+//printr($_SESSION);
 
-$uid = $_SESSION['uid'];
-$email = $_SESSION['Email'];
+//$uid = $_SESSION['uid'];
+//$email = $_SESSION['Email'];
 
 $allergy_list = $_POST['allergy'];
-$allergy_names = str_replace( ',' , '<br />', $allergy_names);
-echo "Your allergies are: $allergy_names";
+echo "ALLERGY LIST: $allergy_list";
+$allergy_results = str_replace( ',' , '<br />', $allergy_list);
+echo "<br>";
+echo "Your allergies are:";
+echo "<br>"; 
+echo "$allergy_results";
+echo "<br>";
 
-// $query = "SELECT pid FROM Plant";
-// $result = mysqli_query($con->query($query)) or die ("Invalid Selection" . $con->error);
-// $rows = $result->num_rows;
-//
-// for ($i=0; $i<$rows; $i++) {
-//   if ($result->fetch_array()['cname']==$allergy_name) {
-//     $pid = $result->fetch_array()['pid'];
-//     $sql = "INSERT INTO Allergic_To (uid, pid) VALUES ('$uid', '$pid')";
-//   }
-//   else
-//     {
-//       echo "Failed to Insert";
-//     }
-// }
-// echo "UID: $uid";
 
-// $sql="INSERT INTO Allergic_To (UID) VALUES ()";
+
 
 if (!mysqli_query($con,$sql))
   {
     die('Error: ' . mysqli_error($con));
   }
-else
-  {
+else{
+  echo "PROBLEM!";
+}
 
-  }
 mysqli_close($con);
+
 ?>
