@@ -57,7 +57,7 @@ table#t01 th {
   }
   echo "</table>";
 
-echo "<div style='text-align: center'><font color='white'><a href='results.json' download='plantreport.json'></font>Export</a></div>";
+echo "<div style='text-align: center'><font color='white'><a href='results.json' download='plantreport.json' style='color:white'></font>Export</a></div>";
 
 //  $response[] = $posts;
   $stmt->close();
