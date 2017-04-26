@@ -3,7 +3,7 @@ require "dbconnect.php";
 $db = DbUtil::loginConnection();
 
 $stmt = $db->stmt_init();
-
+$fp = fopen('arbor_result.json', 'w');
 if($stmt->prepare("select arborname, numspecies from Arboretum where arborname like ?") or die(mysqli_error($db))) {
   $searchString = '%' . $_GET['searchName'] . '%';
   $stmt->bind_param(s, $searchString);
@@ -40,9 +40,10 @@ table#t01 th {
 
  while($stmt->fetch()) {
     echo "<tr><td>$arborname</td><td>$numspecies</td></tr>";
+    fwrite($fp, json_encode(array("$arborname", "$numspecies")));
   }
   echo "</table>";
-
+echo "<div style='text-align: center'><font color='white'><a href='arbor_result.json' download='arborreport.json' style='color:white'></font>Export</a></div>";
   $stmt->close();
 }
 
