@@ -46,7 +46,7 @@ table#t01 th {
   }
   echo "</table>";
   echo "<br>";
-  echo "<div style='text-align: center'> <button type='button' class='btn btn-primary btn-lg'  <font color='black'><a href='results.json' download='arborreport.json' style='color:white'></font>Export</a></button> </div>";
+  echo "<div style='text-align: center'> <button type='button' class='btn btn-primary btn-lg'  <font color='black'><a href='arbor_result.json' download='arborreport.json' style='color:white'></font>Export</a></button> </div>";
   $stmt->close();
 }
 
