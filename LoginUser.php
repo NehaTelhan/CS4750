@@ -81,7 +81,7 @@
                     <div class="intro-text">
                         <div class="intro-text">
                             <h1 class="name">Login Success!</h1>
-                            <p> Click an option in your menu bar to get started! </p>
+                            <p><strong> Click an option in your menu bar to get started!</strong> </p>
                               <p>
    
 <?php
@@ -99,17 +99,15 @@ $result = mysqli_query($con, $query1);
 while($row = mysqli_fetch_array($result)) {
   if($row['email'] == $email) {
     $uid = $row['uid'];
-    echo "UID IS: $uid";
+    //echo "UID IS: $uid";
   }
 }
 $_SESSION['UID'] = $uid;
 
-print_r($_SESSION);
-
-echo "<br>";
+//print_r($_SESSION);
 echo "You are logged in as $email";
 echo "<br>";
-echo "Your UID is: $uid";
+//echo "Your UID is: $uid";
 ?>
                               </p>
 
