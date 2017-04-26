@@ -1,5 +1,5 @@
 <?php
-require "dbconnect.php";
+require "dbconnect_plant.php";
 $db = DbUtil::loginConnection();
 
 $stmt = $db->stmt_init();

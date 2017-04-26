@@ -1,5 +1,5 @@
 <?php
-require "dbconnect.php";
+require "dbconnect_plant.php";
 require "PlantSelect.php";
 
  while($stmt->fetch()) {
