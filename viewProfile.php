@@ -112,7 +112,7 @@ session_start();
 //print_r($_SESSION);
 
 if(isset($_SESSION['Email'])){
-  echo "Your session is running as " . $_SESSION['Email'];
+  //echo "Your session is running as " . $_SESSION['Email'];
 }
 // Check connection
 if (mysqli_connect_errno()) {
@@ -130,11 +130,11 @@ $result = mysqli_query($con,$query);
 while($row = mysqli_fetch_array($result)) {
   if ($row['email'] == $inputEmail) {
     echo "<br>";
-    echo " "."<strong>First Name</strong>: $row[firstname]";
+    echo " "."<div class='text-center'><strong>First Name</strong>: $row[firstname]";
     echo "<br>";
     echo " "."<strong>Last Name</strong>: $row[lastname]";
     echo "<br>";
-    echo " "."<strong>Email</strong>: $row[email]";
+    echo " "."<strong>Email</strong>: $row[email]</div>";
     echo "<br>";
   }
 }
@@ -267,7 +267,8 @@ foreach($parsed as $item){
 //else {
 //echo "Error deleting record: " . $con->error;
 //}
-
+echo "<i>*Please refresh the page to see an updated list of your allergies.</i>";
+echo "<br>";
 mysqli_close($con);
 ?>
 
