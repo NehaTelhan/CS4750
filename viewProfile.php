@@ -121,11 +121,7 @@ echo("Can't connect to MySQL Server. Error code: " . mysqli_connect_error());
 
 $inputEmail = $_SESSION['Email'];
 $uid = $_SESSION['UID'];
-echo "UID: $uid";
-
-// Form the SQL query (a SELECT query)
-//$sql="SELECT uid, firstname, lastname, email, password, hasallergy FROM User WHERE email LIKE $inputEmail";
-//$result= mysqli_query($con,$sql);
+//echo "UID: $uid";
 
 $query = "SELECT uid, firstname, lastname, email, password, hasallergy FROM User";
 $result = mysqli_query($con,$query);
@@ -167,7 +163,53 @@ mysqli_close($con);
 
             </p>
 
+            <!-- Display comprehensive allergy list -->
             </div>
+            <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Your Allergies</h2>
+                    <hr class="star-primary">
+                </div>
+            </div>
+
+            <!--INSERT PHP HERE TO DISPLAY ALL THE ALLERGIES !-->
+
+            <?php
+            require_once('./library.php');
+            $con = new mysqli($SERVER, $USERNAME, $PASSWORD, $DATABASE);
+
+            if (mysqli_connect_errno()) {
+            echo("Can't connect to MySQL Server. Error code: " . mysqli_connect_error());
+            }
+
+            session_start();
+            $uid = $_SESSION['UID'];
+
+            $sql="SELECT uid, pid FROM Allergic_To";
+            $result = mysqli_query($con,$sql);
+
+            $pid_list = array();
+
+            while($row=mysqli_fetch_array($result)){
+              if($row['uid']==$uid){
+                $pid_item = $row['pid'];
+                array_push($pid_list, $pid_item);
+              }
+            }
+
+            foreach($pid_list as $item){
+              //trying to match pid_item to commonname in plant
+              $query = "SELECT pid, symbol, genus, species, cname, family FROM Plant WHERE pid=$item";
+              $result2 = mysqli_query($con,$query);
+              echo "Result2: $result2";
+              $row2 = mysqli_fetch_array($result2);
+              echo "Row2: $row2";
+              //echo "Name: $row2['cname'] and its PID is $row2:['']"
+            }
+            ?>
+          </div> <!-- closes container -->
+
         </div>
     </section>
 
