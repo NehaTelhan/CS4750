@@ -245,25 +245,27 @@ $uid = $_SESSION['UID'];
 $delete_list = $_POST['delete'];
 $parsed = explode(', ', $delete_list);
 $count = 0;
+
 foreach($parsed as $item){
   $sql="SELECT uid,pid FROM Allergic_To";
   $result2=mysqli_query($con,$sql);
   while($row2 = mysqli_fetch_array($result2)){
-    //if($row2['pid']==$item && $row2['uid']==$uid){
-    $query="DELETE FROM Allergic_To WHERE uid=$uid AND pid='$item' "; 
-      //} uid=$row2['uid']
+    $query="DELETE FROM Allergic_To WHERE uid=$uid AND pid='$item' ";
+    //$count++;
   }
-    if($con->query($query) == True) {
-      //      echo "Record deleted successfully";
-      $count++;
-    }
-    else {
-      echo "Error deleting record: " . $con->error;
-    }
-
 }
 
-echo "$count Records Deleted Successfully.";
+//if($con->query($query) == True) {
+  //      echo "Record deleted successfully";                                                                                                                                    
+  //$count++;
+  //$count = $count-1;
+  //echo "$count Records Deleted Successfully.";
+
+//}
+//else {
+//echo "Error deleting record: " . $con->error;
+//}
+
 mysqli_close($con);
 ?>
 
